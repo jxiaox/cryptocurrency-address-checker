@@ -1,3 +1,7 @@
 export default interface IChecker {
-  validate(address: string, coin: string): boolean;
+  /**
+   *
+   * @param address crypto coin address
+   */
+  validate(address: string): boolean;
 }
