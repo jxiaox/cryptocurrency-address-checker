@@ -9,7 +9,8 @@
     // Recommended built-in rules
     "no-var-keyword": true,
     "no-parameter-reassignment": true,
-    "typedef": [true, "call-signature"]
+    "typedef": [true, "call-signature"],
+    "no-console": false
     /* end tslint-immutable rules */
   }
 }
