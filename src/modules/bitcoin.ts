@@ -12,12 +12,17 @@ class BitcoinChecker implements IChecker {
     return address.length > 0;
   }
   protected getChecksum(bodyHex: string): string {
-    return sha256(sha256(bodyHex)).substr(0, 8);
+    console.log('bodyHex', bodyHex, sha256(bodyHex));
+    const hash = sha256(sha256(bodyHex));
+    console.log('hash', hash);
+    // console.log('base58', toHex(bs58.encode(hash)));
+
+    return hash.substr(0, 8);
   }
 
-  protected isLegalAddress(address: string, decoded: Buffer): boolean {
+  protected isLegalAddress(address: string, decoded: string): boolean {
     if (address && decoded && decoded.length > 0) {
-      if (decoded.length === this.EXPECTED_LENGTH) {
+      if (decoded.length === this.EXPECTED_LENGTH * 2) {
         return true;
       }
     }
@@ -33,19 +38,23 @@ class BitcoinChecker implements IChecker {
    * @memberof BitcoinChecker
    */
   protected getAddressType(address: string): string | null {
-    const decoded: Buffer = bs58.decode(address);
+    const decoded: string = toHex(bs58.decode(address));
+    console.log('decoded', decoded);
 
     if (this.isLegalAddress(address, decoded)) {
       const decodedLength: number = decoded.length;
 
-      const checksumHex: string = toHex(
-        decoded.slice(decodedLength - 4, decodedLength)
+      const decodedChecksum: string = decoded.slice(
+        decodedLength - 8,
+        decodedLength
       );
-      const bodyHex: string = toHex(decoded.slice(0, decodedLength - 4));
-      const baseChecksum: string = this.getChecksum(bodyHex);
-      console.log('addressChecksum', checksumHex, bodyHex, baseChecksum);
-      if (checksumHex === baseChecksum) {
-        return toHex(decoded.slice(0, this.EXPECTED_LENGTH - 24));
+
+      const bodyHex: string = decoded.slice(0, decodedLength - 8);
+
+      const bodyChecksum: string = this.getChecksum(bodyHex);
+      console.log('addressChecksum', decodedChecksum, bodyHex, bodyChecksum);
+      if (decodedChecksum === bodyChecksum) {
+        return decoded.slice(0, this.EXPECTED_LENGTH - 24);
       }
     }
     return null;
