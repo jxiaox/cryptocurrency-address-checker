@@ -59,7 +59,6 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.15",
-    "ava": "1.0.0-beta.7",
     "babel-jest": "^24.8.0",
     "codecov": "^3.1.0",
     "cz-conventional-changelog": "^2.1.0",
@@ -79,15 +78,6 @@
     "tslint-immutable": "^5.0.0",
     "typedoc": "^0.13.0",
     "typescript": "^3.1.6"
-  },
-  "ava": {
-    "failFast": true,
-    "files": [
-      "build/main/**/*.spec.js"
-    ],
-    "sources": [
-      "build/main/**/*.js"
-    ]
   },
   "config": {
     "commitizen": {
