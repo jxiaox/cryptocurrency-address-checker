@@ -1,15 +1,33 @@
 import IChecker from '@/interfaces/checker.interface';
+import ICoin from '@/interfaces/coin.interface';
 import { bs58, sha256 } from '@/lib/hash';
 import { toHex } from '@/utils';
+import { coinsConfig } from '@/utils/configs';
+import { Network_type } from '@/utils/constants';
 
-class BitcoinChecker implements IChecker {
-  protected EXPECTED_LENGTH: number = 25;
-  protected HASH_FUNCTION: string = 'sha256';
+class BitcoinChecker implements IChecker, ICoin {
+  public name: string;
+  public symbol: string;
+  public expectedLength: number;
+  public hashAlgorithm: string;
+  public networkType: Network_type;
+
+  constructor(networkType: Network_type = Network_type.Mainnet) {
+    this.networkType = networkType;
+    this.hashAlgorithm = coinsConfig.btc.algorithm;
+    this.name = coinsConfig.btc.fullName;
+    this.symbol = coinsConfig.btc.symbol;
+    this.expectedLength = 25;
+  }
+
   public validate(address: string): boolean {
     const addressType = this.getAddressType(address);
-    console.log('addressType', addressType);
-
-    return address.length > 0;
+    if (addressType) {
+      return coinsConfig.btc.addressTypes[this.networkType].includes(
+        addressType
+      );
+    }
+    return false;
   }
 
   /**
@@ -33,14 +51,7 @@ class BitcoinChecker implements IChecker {
 
       const bodyChecksum: string = this.getChecksum(bodyHex);
       if (decodedChecksum === bodyChecksum) {
-        console.log(
-          toHex(decoded),
-          decodedChecksum,
-          toHex(bodyHex),
-          bodyChecksum
-        );
-
-        return toHex(decoded.slice(0, this.EXPECTED_LENGTH - 24));
+        return toHex(decoded.slice(0, this.expectedLength - 24));
       }
     }
     return null;
@@ -52,7 +63,7 @@ class BitcoinChecker implements IChecker {
 
   protected isLegalAddress(address: string, decoded: Buffer): boolean {
     if (address && decoded && decoded.length > 0) {
-      if (decoded.length === this.EXPECTED_LENGTH) {
+      if (decoded.length === this.expectedLength) {
         return true;
       }
     }
@@ -60,4 +71,4 @@ class BitcoinChecker implements IChecker {
   }
 }
 
-export default new BitcoinChecker();
+export default BitcoinChecker;

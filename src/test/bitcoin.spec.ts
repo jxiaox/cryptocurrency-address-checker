@@ -1,16 +1,19 @@
 import BitcoinChecker from '@/modules/bitcoin';
+import { Network_type } from '@/utils/constants';
 
 test('check address type', () => {
   // mainnet
+  const mainnetChecker = new BitcoinChecker(Network_type.Mainnet);
   expect(
-    BitcoinChecker.getAddressType('1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs')
+    mainnetChecker.getAddressType('1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs')
   ).toBe('00');
   expect(
-    BitcoinChecker.getAddressType('3NJZLcZEEYBpxYEUGewU4knsQRn1WM5Fkt')
+    mainnetChecker.getAddressType('3NJZLcZEEYBpxYEUGewU4knsQRn1WM5Fkt')
   ).toBe('05');
 
   // testnet
+  const testnetChecker = new BitcoinChecker(Network_type.Testnet);
   expect(
-    BitcoinChecker.getAddressType('mvppDXkpVQx6bNgAqKjkaFsH8FZAMM3gSC')
+    testnetChecker.getAddressType('mvppDXkpVQx6bNgAqKjkaFsH8FZAMM3gSC')
   ).toBe('6f');
 });
