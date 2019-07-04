@@ -56,6 +56,14 @@ class BitcoinChecker implements IChecker, ICoin {
     }
     return null;
   }
+  /**
+   * 通过正则预检查
+   * @param address 地址
+   */
+  protected preCheck(address: string): boolean {
+    return coinsConfig.btc.addressReg[this.networkType].test(address);
+  }
+
   protected getChecksum(bodyHex: Buffer): string {
     const hash = sha256(sha256(bodyHex, 'buffer'));
     return hash.substr(0, 8);
