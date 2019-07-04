@@ -12,10 +12,27 @@ import shaJs from 'sha.js';
  *
  * @returns sha256 message digest
  */
-export function sha256(message: string): string {
-  return shaJs('sha256')
-    .update(message)
-    .digest('hex');
+export function sha256(message: string | Buffer): string;
+export function sha256(message: string | Buffer, type: string): Buffer;
+export function sha256(
+  message: string | Buffer,
+  type: string = 'hex'
+): string | Buffer {
+  const hash = shaJs('sha256').update(message);
+  if (type === 'hex') {
+    return hash.digest('hex');
+  } else {
+    return hash.digest();
+  }
 }
+
+// export function sha256(message: string | Buffer): Buffer {
+//   return shaJs('sha256')
+//     .update(message)
+//     .digest();
+// }
+// export function foo(x: string): string;
+// export function foo(y: number, z: string):any;
+// export function foo(y: string | number, z?: string): string { return y + z }
 
 export import bs58 = require('bs58');
