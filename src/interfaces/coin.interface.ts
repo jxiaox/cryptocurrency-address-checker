@@ -1,10 +1,8 @@
+import { Network_type } from '@/utils/constants';
 export default interface ICoin {
   name: string;
   symbol: string;
-  algorithm: string;
-  /**
-   *
-   * @param address crypto coin address
-   */
-  validate(address: string): boolean;
+  hashAlgorithm: string;
+  expectedLength: number;
+  networkType: Network_type;
 }
