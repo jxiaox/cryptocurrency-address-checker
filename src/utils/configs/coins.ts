@@ -3,6 +3,7 @@ const config = {
   btc: {
     fullName: 'Bitcoin',
     symbol: 'BTC',
+    // tslint:disable-next-line: object-literal-sort-keys
     algorithm: 'SHA256',
     addressTypes: {
       [Network_type.Mainnet]: ['00', '05'],

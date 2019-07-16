@@ -1,5 +1,5 @@
+import bs58 from 'bs58';
 import shaJs from 'sha.js';
-
 /**
  * Calculate the sha256 digest of a string.
  *
@@ -35,4 +35,4 @@ export function sha256(
 // export function foo(y: number, z: string):any;
 // export function foo(y: string | number, z?: string): string { return y + z }
 
-export import bs58 = require('bs58');
+export { bs58 };
