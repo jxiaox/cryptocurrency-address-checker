@@ -21,12 +21,15 @@ class BitcoinChecker implements IChecker, ICoin {
   }
 
   public validate(address: string): boolean {
-    const addressType = this.getAddressType(address);
-    if (addressType) {
-      return coinsConfig.btc.addressTypes[this.networkType].includes(
-        addressType
-      );
+    if (this.preCheck(address)) {
+      const addressType = this.getAddressType(address);
+      if (addressType) {
+        return coinsConfig.btc.addressTypes[this.networkType].includes(
+          addressType
+        );
+      }
     }
+
     return false;
   }
 
@@ -60,7 +63,7 @@ class BitcoinChecker implements IChecker, ICoin {
    * 通过正则预检查
    * @param address 地址
    */
-  protected preCheck(address: string): boolean {
+  public preCheck(address: string): boolean {
     return coinsConfig.btc.addressReg[this.networkType].test(address);
   }
 
