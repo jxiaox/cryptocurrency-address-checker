@@ -16,6 +16,9 @@ test('check address type', () => {
   expect(
     testnetChecker.getAddressType('mvppDXkpVQx6bNgAqKjkaFsH8FZAMM3gSC')
   ).toBe('6f');
+  expect(
+    testnetChecker.getAddressType('2MzQwSSnBHWHqSAqtTVQ6v47XtaisrJa1Vc')
+  ).toBe('c4');
 });
 
 test('precheck address', () => {
