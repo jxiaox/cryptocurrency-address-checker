@@ -1,9 +1,10 @@
 import { Network_type } from '@/utils/constants';
+/* tslint:disable:object-literal-sort-keys */
 const config = {
   btc: {
     fullName: 'Bitcoin',
     symbol: 'BTC',
-    // tslint:disable-next-line: object-literal-sort-keys
+
     algorithm: 'SHA256',
     addressTypes: {
       [Network_type.Mainnet]: ['00', '05'],
@@ -12,15 +13,20 @@ const config = {
     addressReg: {
       [Network_type.Mainnet]: /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/,
       [Network_type.Testnet]: /^[cmnt29][a-km-zA-HJ-NP-Z1-9]{33}/
+    }
+  },
+  bch: {
+    fullName: 'Bitcoin Cash',
+    symbol: 'BCH',
+    algorithm: 'SHA256',
+    addressTypes: {
+      [Network_type.Mainnet]: ['00', '05'],
+      [Network_type.Testnet]: ['6f', 'c4']
     },
-    hashrateScale: 'T',
-    biggestHashrateScale: 'P',
-    hashrateUnit: 'H/s',
-    explorer: 'https://btc.com',
-    blockHeight: '/',
-    blockHash: '/',
-    address: '/',
-    txHash: '/'
+    addressReg: {
+      [Network_type.Mainnet]: /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/,
+      [Network_type.Testnet]: /^[cmnt29][a-km-zA-HJ-NP-Z1-9]{33}/
+    }
   }
 };
 
