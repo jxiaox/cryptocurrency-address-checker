@@ -11,8 +11,8 @@ const config = {
       [Network_type.Testnet]: ['6f', 'c4']
     },
     addressReg: {
-      [Network_type.Mainnet]: /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/,
-      [Network_type.Testnet]: /^[cmnt29][a-km-zA-HJ-NP-Z1-9]{33}/
+      [Network_type.Mainnet]: [/^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/],
+      [Network_type.Testnet]: [/^[cmnt29][a-km-zA-HJ-NP-Z1-9]{33}/]
     }
   },
   bch: {
@@ -24,8 +24,11 @@ const config = {
       [Network_type.Testnet]: ['6f', 'c4']
     },
     addressReg: {
-      [Network_type.Mainnet]: /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/,
-      [Network_type.Testnet]: /^[cmnt29][a-km-zA-HJ-NP-Z1-9]{33}/
+      [Network_type.Mainnet]: [
+        /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/,
+        /^((bitcoincash:)?(q|p)[a-z0-9]{41})/
+      ],
+      [Network_type.Testnet]: [/^[cmnt29][a-km-zA-HJ-NP-Z1-9]{33}/]
     }
   }
 };

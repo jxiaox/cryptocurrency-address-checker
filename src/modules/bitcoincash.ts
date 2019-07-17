@@ -6,7 +6,9 @@ class BitcoinCashChecker extends BitcoinChecker {
    * @param address 地址
    */
   public preCheck(address: string): boolean {
-    return coinsConfig.btc.addressReg[this.networkType].test(address);
+    return coinsConfig.btc.addressReg[this.networkType].some(reg =>
+      reg.test(address)
+    );
   }
 }
 
