@@ -50,10 +50,10 @@ class BitcoinChecker implements IChecker, ICoin {
         decoded.slice(decodedLength - 4, decodedLength)
       );
 
-      const bodyHex: Buffer = decoded.slice(0, decodedLength - 4);
+      const payloadHex: Buffer = decoded.slice(0, decodedLength - 4);
 
-      const bodyChecksum: string = this.getChecksum(bodyHex);
-      if (decodedChecksum === bodyChecksum) {
+      const payloadChecksum: string = this.getChecksum(payloadHex);
+      if (decodedChecksum === payloadChecksum) {
         return toHex(decoded.slice(0, this.expectedLength - 24));
       }
     }
@@ -69,8 +69,8 @@ class BitcoinChecker implements IChecker, ICoin {
     );
   }
 
-  protected getChecksum(bodyHex: Buffer): string {
-    const hash = sha256(sha256(bodyHex, 'buffer'));
+  protected getChecksum(payloadHex: Buffer): string {
+    const hash = sha256(sha256(payloadHex, 'buffer'));
     return hash.substr(0, 8);
   }
 
