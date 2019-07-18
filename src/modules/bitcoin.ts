@@ -17,7 +17,7 @@ class BitcoinChecker implements IChecker, ICoin {
     this.hashAlgorithm = coinsConfig.btc.algorithm;
     this.name = coinsConfig.btc.fullName;
     this.symbol = coinsConfig.btc.symbol;
-    this.expectedLength = 25;
+    this.expectedLength = coinsConfig.btc.addressExpectedLength;
   }
 
   public validate(address: string): boolean {

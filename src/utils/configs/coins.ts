@@ -13,7 +13,8 @@ const config = {
     addressReg: {
       [Network_type.Mainnet]: [/^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/],
       [Network_type.Testnet]: [/^[cmnt29][a-km-zA-HJ-NP-Z1-9]{33}/]
-    }
+    },
+    addressExpectedLength: 25
   },
   bch: {
     fullName: 'Bitcoin Cash',
@@ -29,7 +30,8 @@ const config = {
         /^((bitcoincash:)?(q|p)[a-z0-9]{41})/
       ],
       [Network_type.Testnet]: [/^[cmnt29][a-km-zA-HJ-NP-Z1-9]{33}/]
-    }
+    },
+    addressExpectedLength: 42 // remove <bitcoincash:>
   }
 };
 
