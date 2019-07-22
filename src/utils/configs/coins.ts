@@ -29,7 +29,10 @@ const config = {
         /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/,
         /^((bitcoincash:)?(q|p)[a-z0-9]{41})/
       ],
-      [Network_type.Testnet]: [/^[cmnt29][a-km-zA-HJ-NP-Z1-9]{33}/]
+      [Network_type.Testnet]: [
+        /^[cmnt29][a-km-zA-HJ-NP-Z1-9]{33}/,
+        /^((bchtest:)?(q|p)[a-z0-9]{41})/
+      ]
     },
     addressExpectedLength: 42 // remove <bitcoincash:>
   }
