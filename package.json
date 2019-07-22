@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "@types/bs58": "^4.0.0",
+    "big-integer": "^1.6.44",
     "bs58": "^4.0.1",
     "js-sha256": "^0.9.0",
     "sha.js": "^2.4.11"
