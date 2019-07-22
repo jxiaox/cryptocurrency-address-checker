@@ -11,6 +11,22 @@ function toHex(bytes: Buffer): string {
   }).join('');
 }
 
+/**
+ * Returns the concatenation a and b.
+ *
+ * @private
+ * @param {Uint8Array} a
+ * @param {Uint8Array} b
+ * @returns {Uint8Array}
+ * @throws {ValidationError}
+ */
+function concat(a: Uint8Array, b: Uint8Array): Uint8Array {
+  const ab: Uint8Array = new Uint8Array(a.length + b.length);
+  ab.set(a);
+  ab.set(b, a.length);
+  return ab;
+}
+
 export function toBuffer(arr: ArrayBuffer): Buffer;
 export function toBuffer(arr: Uint8Array): Buffer;
 
@@ -30,4 +46,21 @@ export function toBuffer(arr: ArrayBuffer | Uint8Array): Buffer {
   return buf;
 }
 
-export { toHex };
+/**
+ * Derives an array from the given prefix to be used in the computation
+ * of the address' checksum.
+ *
+ * @private
+ * @param {string} prefix Network prefix. E.g.: 'bitcoincash'.
+ * @returns {Uint8Array}
+ */
+function prefixToUint5Array(prefix: string): Uint8Array {
+  const result = new Uint8Array(prefix.length);
+  for (let i = 0; i < prefix.length; ++i) {
+    // tslint:disable-next-line:no-bitwise
+    result[i] = prefix[i].charCodeAt(0) & 31;
+  }
+  return result;
+}
+
+export { toHex, concat, prefixToUint5Array };
