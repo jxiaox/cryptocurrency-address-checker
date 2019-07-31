@@ -53,13 +53,13 @@
   },
   "dependencies": {
     "@types/bs58": "^4.0.0",
-    "big-integer": "^1.6.44",
     "bs58": "^4.0.1",
+    "cashaddrjs": "^0.3.6",
     "js-sha256": "^0.9.0",
     "sha.js": "^2.4.11"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.15",
+    "@types/jest": "^24.0.16",
     "babel-jest": "^24.8.0",
     "codecov": "^3.1.0",
     "cz-conventional-changelog": "^2.1.0",
