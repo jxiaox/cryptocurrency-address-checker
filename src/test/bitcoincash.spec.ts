@@ -1,6 +1,10 @@
 import BitcoinCashChecker from '@/modules/bitcoincash';
 import { Network_type } from '@/utils/constants';
 
+const NETWORKS = ['bitcoincash', 'bchtest', 'bchreg'];
+
+const ADDRESS_TYPES = ['P2PKH', 'P2SH'];
+
 test('check address type', () => {
   // mainnet
   const mainnetChecker = new BitcoinCashChecker(Network_type.Mainnet);
@@ -14,16 +18,33 @@ test('check address type', () => {
     mainnetChecker.getAddressType(
       'bitcoincash:pp8skudq3x5hzw8ew7vzsw8tn4k8wxsqsv0lt0mf3g'
     )
-  ).toBe('05');
+  ).toBe(ADDRESS_TYPES[0]);
+});
 
-  // testnet
-  const testnetChecker = new BitcoinCashChecker(Network_type.Testnet);
-  expect(
-    testnetChecker.getAddressType('mvppDXkpVQx6bNgAqKjkaFsH8FZAMM3gSC')
-  ).toBe('6f');
-  expect(
-    testnetChecker.getAddressType('2MzQwSSnBHWHqSAqtTVQ6v47XtaisrJa1Vc')
-  ).toBe('c4');
+test('should fail when the version byte is invalid', () => {
+  // mainnet
+  const mainnetChecker = new BitcoinCashChecker(Network_type.Mainnet);
+  try {
+    mainnetChecker.getAddressType(
+      'bitcoincash:zpm2qsznhks23z7629mms6s4cwef74vcwvrqekrq9w'
+    );
+  } catch (error) {
+    expect(error.message).toMatch(/Invalid address type/);
+  }
+  try {
+    mainnetChecker.getAddressType(
+      'BitCOINcash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a'
+    );
+  } catch (error) {
+    expect(error.message).toMatch(/Invalid address/);
+  }
+  try {
+    mainnetChecker.getAddressType(
+      'BitCOINcash:QPM2QSZNHKS23Z7629MMS6s4cwef74vcwvY22GDX6A'
+    );
+  } catch (error) {
+    expect(error.message).toMatch(/Invalid address/);
+  }
 });
 
 test('precheck address', () => {
