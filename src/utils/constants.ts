@@ -3,4 +3,9 @@ enum Network_type {
   Testnet
 }
 
-export { Network_type };
+enum ADDRESS_TYPES {
+  P2PKH = 'P2PKH',
+  P2SH = 'P2SH'
+}
+
+export { Network_type, ADDRESS_TYPES };
