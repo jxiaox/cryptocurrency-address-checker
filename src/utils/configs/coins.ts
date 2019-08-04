@@ -35,6 +35,11 @@ const config = {
       ]
     },
     addressExpectedLength: 42 // remove <bitcoincash:>
+  },
+  eth: {
+    fullName: 'Ethereum',
+    symbol: 'ETH',
+    algorithm: 'Ethash'
   }
 };
 
