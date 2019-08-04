@@ -27,8 +27,7 @@ function concat(a: Uint8Array, b: Uint8Array): Uint8Array {
   return ab;
 }
 
-export function toBuffer(arr: ArrayBuffer): Buffer;
-export function toBuffer(arr: Uint8Array): Buffer;
+export function toBuffer(arr: ArrayBuffer | Uint8Array): Buffer;
 
 /**
  * 转换为Buffer

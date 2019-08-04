@@ -8,14 +8,15 @@
  * Charset containing the 32 symbols used in the base32 encoding.
  * @private
  */
-let CHARSET = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l';
+const CHARSET = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l';
 
 /**
  * Inverted index mapping each symbol into its index within the charset.
  * @private
  */
-let CHARSET_INVERSE_INDEX = {
+const CHARSET_INVERSE_INDEX = {
   q: 0,
+  // tslint:disable-next-line:object-literal-sort-keys
   p: 1,
   z: 2,
   r: 3,

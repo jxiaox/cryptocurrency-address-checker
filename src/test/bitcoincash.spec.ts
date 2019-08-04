@@ -71,7 +71,7 @@ describe('preCheck()', () => {
       mainnetChecker.preCheck('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqfnhks603')
     ).toBe(true);
   });
-  it('should validated when use correct bch address', () => {});
+  // it('should validated when use correct bch address', () => {});
 });
 
 describe('validate()', () => {
@@ -106,8 +106,8 @@ describe('validate()', () => {
       mainnetChecker.validate('BC1QR508D6QEJXTDG4Y5R3ZARVARYV98GJ9P')
     ).toBe(false);
   });
-  it('should validated when use correct bch address', () => {});
-  it('should validated when use correct bch address', () => {});
+  // it('should validated when use correct bch address', () => {});
+  // it('should validated when use correct bch address', () => {});
 });
 
 describe('decode()', () => {
