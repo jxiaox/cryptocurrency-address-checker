@@ -3,6 +3,6 @@ export default interface ICoin {
   name: string;
   symbol: string;
   hashAlgorithm: string;
-  expectedLength: number;
+  // expectedLength: number;
   networkType: Network_type;
 }
