@@ -20,6 +20,19 @@ class BitcoinCashChecker extends BitcoinChecker {
     this.bitcoinChecker = new BitcoinChecker(networkType);
   }
 
+  public validate(address: string): boolean {
+    if (this.preCheck(address)) {
+      const addressType = this.getAddressType(address);
+      if (addressType) {
+        return coinsConfig.bch.addressTypes[this.networkType].includes(
+          addressType
+        );
+      }
+    }
+
+    return false;
+  }
+
   /**
    * 获取地址类型
    * 新的bch地址是base32加密的
