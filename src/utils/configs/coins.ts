@@ -39,7 +39,8 @@ const config = {
   eth: {
     fullName: 'Ethereum',
     symbol: 'ETH',
-    algorithm: 'Ethash'
+    algorithm: 'Ethash',
+    addressReg: [/^0x[a-fA-F0-9]{40}$/]
   },
   ltc: {
     fullName: 'Litecoin',
