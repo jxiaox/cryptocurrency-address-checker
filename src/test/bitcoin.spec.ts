@@ -11,14 +11,14 @@ test('check address type', () => {
     mainnetChecker.getAddressType('3NJZLcZEEYBpxYEUGewU4knsQRn1WM5Fkt')
   ).toBe('05');
 
-  // testnet
-  const testnetChecker = new BitcoinChecker(Network_type.Testnet);
-  expect(
-    testnetChecker.getAddressType('mvppDXkpVQx6bNgAqKjkaFsH8FZAMM3gSC')
-  ).toBe('6f');
-  expect(
-    testnetChecker.getAddressType('2MzQwSSnBHWHqSAqtTVQ6v47XtaisrJa1Vc')
-  ).toBe('c4');
+  // // testnet
+  // const testnetChecker = new BitcoinChecker(Network_type.Testnet);
+  // expect(
+  //   testnetChecker.getAddressType('mvppDXkpVQx6bNgAqKjkaFsH8FZAMM3gSC')
+  // ).toBe('6f');
+  // expect(
+  //   testnetChecker.getAddressType('2MzQwSSnBHWHqSAqtTVQ6v47XtaisrJa1Vc')
+  // ).toBe('c4');
 });
 
 test('precheck address', () => {
@@ -43,11 +43,11 @@ test('precheck address', () => {
     false
   );
 
-  // testnet
-  const testnetChecker = new BitcoinChecker(Network_type.Testnet);
-  expect(testnetChecker.preCheck('mvppDXkpVQx6bNgAqKjkaFsH8FZAMM3gSC')).toBe(
-    true
-  );
+  // // testnet
+  // const testnetChecker = new BitcoinChecker(Network_type.Testnet);
+  // expect(testnetChecker.preCheck('mvppDXkpVQx6bNgAqKjkaFsH8FZAMM3gSC')).toBe(
+  //   true
+  // );
 });
 
 test('validate address', () => {
@@ -73,9 +73,9 @@ test('validate address', () => {
     false
   );
 
-  // testnet
-  const testnetChecker = new BitcoinChecker(Network_type.Testnet);
-  expect(testnetChecker.validate('mvppDXkpVQx6bNgAqKjkaFsH8FZAMM3gSC')).toBe(
-    true
-  );
+  // // testnet
+  // const testnetChecker = new BitcoinChecker(Network_type.Testnet);
+  // expect(testnetChecker.validate('mvppDXkpVQx6bNgAqKjkaFsH8FZAMM3gSC')).toBe(
+  //   true
+  // );
 });

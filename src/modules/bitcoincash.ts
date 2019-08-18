@@ -24,9 +24,7 @@ class BitcoinCashChecker extends BitcoinChecker {
     if (this.preCheck(address)) {
       const addressType = this.getAddressType(address);
       if (addressType) {
-        return coinsConfig.bch.addressTypes[this.networkType].includes(
-          addressType
-        );
+        return coinsConfig.bch.addressTypes.includes(addressType);
       }
     }
 
@@ -55,9 +53,7 @@ class BitcoinCashChecker extends BitcoinChecker {
    * @param address 地址
    */
   public preCheck(address: string): boolean {
-    return coinsConfig.bch.addressReg[this.networkType].some(reg =>
-      reg.test(address)
-    );
+    return coinsConfig.bch.addressReg.some(reg => reg.test(address));
   }
 
   /**

@@ -19,9 +19,7 @@ class LitecoinChecker extends BitcoinChecker {
     if (this.preCheck(address)) {
       const addressType = this.getAddressType(address);
       if (addressType) {
-        return coinsConfig.ltc.addressTypes[this.networkType].includes(
-          addressType
-        );
+        return coinsConfig.ltc.addressTypes.includes(addressType);
       }
     }
 

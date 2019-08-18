@@ -6,34 +6,19 @@ const config = {
     symbol: 'BTC',
 
     algorithm: 'SHA256',
-    addressTypes: {
-      [Network_type.Mainnet]: ['00', '05'],
-      [Network_type.Testnet]: ['6f', 'c4']
-    },
-    addressReg: {
-      [Network_type.Mainnet]: [/^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/],
-      [Network_type.Testnet]: [/^[cmnt29][a-km-zA-HJ-NP-Z1-9]{33}/]
-    },
+    addressTypes: ['00', '05'],
+    addressReg: [/^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/],
     addressExpectedLength: 25
   },
   bch: {
     fullName: 'Bitcoin Cash',
     symbol: 'BCH',
     algorithm: 'SHA256',
-    addressTypes: {
-      [Network_type.Mainnet]: ['00', '05'],
-      [Network_type.Testnet]: ['6f', 'c4']
-    },
-    addressReg: {
-      [Network_type.Mainnet]: [
-        /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/,
-        /^((bitcoincash:)?(q|p)[a-z0-9]{41})/
-      ],
-      [Network_type.Testnet]: [
-        /^[cmnt29][a-km-zA-HJ-NP-Z1-9]{33}/,
-        /^((bchtest:)?(q|p)[a-z0-9]{41})/
-      ]
-    },
+    addressTypes: ['00', '05'],
+    addressReg: [
+      /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/,
+      /^((bitcoincash:)?(q|p)[a-z0-9]{41})/
+    ],
     addressExpectedLength: 42 // remove <bitcoincash:>
   },
   eth: {

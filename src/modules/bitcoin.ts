@@ -24,9 +24,7 @@ class BitcoinChecker implements IChecker, ICoin {
     if (this.preCheck(address)) {
       const addressType = this.getAddressType(address);
       if (addressType) {
-        return coinsConfig.btc.addressTypes[this.networkType].includes(
-          addressType
-        );
+        return coinsConfig.btc.addressTypes.includes(addressType);
       }
     }
 
@@ -64,9 +62,7 @@ class BitcoinChecker implements IChecker, ICoin {
    * @param address 地址
    */
   public preCheck(address: string): boolean {
-    return coinsConfig.btc.addressReg[this.networkType].some(reg =>
-      reg.test(address)
-    );
+    return coinsConfig.btc.addressReg.some(reg => reg.test(address));
   }
 
   protected getChecksum(payloadHex: Buffer): string {
