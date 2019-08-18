@@ -40,6 +40,15 @@ const config = {
     fullName: 'Ethereum',
     symbol: 'ETH',
     algorithm: 'Ethash'
+  },
+  ltc: {
+    fullName: 'Litecoin',
+    symbol: 'LTC',
+
+    algorithm: 'SHA256',
+    addressTypes: ['30', '05', '32'],
+    addressReg: [/^[LM3][a-km-zA-HJ-NP-Z1-9]{26,33}$/],
+    addressExpectedLength: 25
   }
 };
 
