@@ -6,7 +6,7 @@ const config = {
 
     algorithm: 'SHA256',
     addressTypes: ['00', '05'],
-    addressReg: [/^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/],
+    addressReg: [/^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$/],
     addressExpectedLength: 25
   },
   bch: {
