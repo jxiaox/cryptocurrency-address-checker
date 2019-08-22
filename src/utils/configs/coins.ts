@@ -1,4 +1,3 @@
-import { Network_type } from '@/utils/constants';
 /* tslint:disable:object-literal-sort-keys */
 const config = {
   btc: {
