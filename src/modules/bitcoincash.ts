@@ -22,6 +22,9 @@ class BitcoinCashChecker extends BitcoinChecker {
 
   public validate(address: string): boolean {
     if (this.preCheck(address)) {
+      if (this.bitcoinChecker.preCheck(address)) {
+        return this.bitcoinChecker.validate(address);
+      }
       const addressType = this.getAddressType(address);
       if (addressType) {
         return coinsConfig.bch.addressTypes.includes(addressType);
@@ -31,23 +34,6 @@ class BitcoinCashChecker extends BitcoinChecker {
     return false;
   }
 
-  /**
-   * 获取地址类型
-   * 新的bch地址是base32加密的
-   *
-   * @public
-   * @param {string} address
-   * @returns {(string | null)}
-   * @memberof BitcoinChecker
-   */
-  public getAddressType(address: string): string | null {
-    // old bitcoin address type
-    if (this.bitcoinChecker.preCheck(address)) {
-      return this.bitcoinChecker.getAddressType(address);
-    }
-    const obj = this.decode(address);
-    return obj.type;
-  }
   /**
    * 通过正则预检查
    * @param address 地址
@@ -66,6 +52,20 @@ class BitcoinCashChecker extends BitcoinChecker {
    */
   public decode(address: string): IAddressInfo {
     return decode(address);
+  }
+
+  /**
+   * 获取地址类型
+   * 新的bch地址是base32加密的
+   *
+   * @protected
+   * @param {string} address
+   * @returns {(string | null)}
+   * @memberof BitcoinChecker
+   */
+  protected getAddressType(address: string): string | null {
+    const obj = this.decode(address);
+    return obj.type;
   }
 }
 

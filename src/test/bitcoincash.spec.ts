@@ -1,34 +1,6 @@
 import BitcoinCashChecker from '@/modules/bitcoincash';
 import { ADDRESS_TYPES, Network_type } from '@/utils/constants';
 
-// const NETWORKS = ['bitcoincash', 'bchtest', 'bchreg'];
-
-describe('getAddressType()', () => {
-  // mainnet
-  const mainnetChecker = new BitcoinCashChecker(Network_type.Mainnet);
-  it('should succeed when use btc address', () => {
-    expect(
-      mainnetChecker.getAddressType('1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs')
-    ).toBe('00');
-    expect(
-      mainnetChecker.getAddressType('3NJZLcZEEYBpxYEUGewU4knsQRn1WM5Fkt')
-    ).toBe('05');
-  });
-
-  it('should succeed when use new bch address', () => {
-    expect(
-      mainnetChecker.getAddressType(
-        'bitcoincash:pp8skudq3x5hzw8ew7vzsw8tn4k8wxsqsv0lt0mf3g'
-      )
-    ).toBe(ADDRESS_TYPES.P2SH);
-    expect(
-      mainnetChecker.getAddressType(
-        'bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a'
-      )
-    ).toBe(ADDRESS_TYPES.P2PKH);
-  });
-});
-
 describe('preCheck()', () => {
   // mainnet
   const mainnetChecker = new BitcoinCashChecker(Network_type.Mainnet);

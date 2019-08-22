@@ -30,16 +30,23 @@ class BitcoinChecker implements IChecker, ICoin {
 
     return false;
   }
+  /**
+   * 通过正则预检查
+   * @param address 地址
+   */
+  public preCheck(address: string): boolean {
+    return coinsConfig.btc.addressReg.some(reg => reg.test(address));
+  }
 
   /**
    * 获取地址类型
    *
-   * @public
+   * @protected
    * @param {string} address
    * @returns {(string | null)}
    * @memberof BitcoinChecker
    */
-  public getAddressType(address: string): string | null {
+  protected getAddressType(address: string): string | null {
     const decoded: Buffer = bs58.decode(address);
     if (this.isLegalAddress(address, decoded)) {
       const decodedLength: number = decoded.length;
@@ -56,13 +63,6 @@ class BitcoinChecker implements IChecker, ICoin {
       }
     }
     return null;
-  }
-  /**
-   * 通过正则预检查
-   * @param address 地址
-   */
-  public preCheck(address: string): boolean {
-    return coinsConfig.btc.addressReg.some(reg => reg.test(address));
   }
 
   protected getChecksum(payloadHex: Buffer): string {
