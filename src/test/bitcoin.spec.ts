@@ -42,6 +42,9 @@ describe('validate()', () => {
     expect(mainnetChecker.validate('3NJZLcZEEYBpxYEUGewU4knsQRn1WM5Fkt')).toBe(
       true
     );
+    expect(
+      mainnetChecker.validate('bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq')
+    ).toBe(true);
   });
 
   it('should failed when use wrong btc address', () => {

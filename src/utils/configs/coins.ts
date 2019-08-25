@@ -7,6 +7,7 @@ const config = {
     algorithm: 'SHA256',
     addressTypes: ['00', '05'],
     addressReg: [/^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$/],
+    segWitAddressReg: /^(bc|tb)1([023456789acdefghjklmnpqrstuvwxyz]+[023456789acdefghjklmnpqrstuvwxyz]{6})$/,
     addressExpectedLength: 25
   },
   bch: {

@@ -4,6 +4,7 @@ import { bs58, sha256 } from '@/lib/hash';
 import { toHex } from '@/utils';
 import { coinsConfig } from '@/utils/configs';
 import { Network_type } from '@/utils/constants';
+import bech32 from 'bech32';
 
 class BitcoinChecker implements IChecker, ICoin {
   public name: string;
@@ -39,6 +40,17 @@ class BitcoinChecker implements IChecker, ICoin {
   }
 
   /**
+   * 是否是SegWit 地址
+   *
+   * @param {string} address
+   * @returns {boolean}
+   * @memberof BitcoinChecker
+   */
+  public isSegWitAddress(address: string): boolean {
+    return coinsConfig.btc.segWitAddressReg.test(address);
+  }
+
+  /**
    * 获取地址类型
    *
    * @protected
@@ -47,7 +59,13 @@ class BitcoinChecker implements IChecker, ICoin {
    * @memberof BitcoinChecker
    */
   protected getAddressType(address: string): string | null {
-    const decoded: Buffer = bs58.decode(address);
+    let decoded: Buffer;
+    if (this.isSegWitAddress(address)) {
+      const bechRes: { prefix: string; words: Buffer } = bech32.decode(address);
+      decoded = bechRes.words;
+    } else {
+      decoded = bs58.decode(address);
+    }
     if (this.isLegalAddress(address, decoded)) {
       const decodedLength: number = decoded.length;
 
@@ -72,9 +90,7 @@ class BitcoinChecker implements IChecker, ICoin {
 
   protected isLegalAddress(address: string, decoded: Buffer): boolean {
     if (address && decoded && decoded.length > 0) {
-      if (decoded.length === this.expectedLength) {
-        return true;
-      }
+      return true;
     }
     return false;
   }
