@@ -33,10 +33,37 @@ describe('preCheck()', () => {
       )
     ).toBe(true);
     expect(
+      mainnetChecker.preCheck(
+        'bitcoincash:qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy'
+      )
+    ).toBe(true);
+    expect(
+      mainnetChecker.preCheck(
+        'bitcoincash:qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r'
+      )
+    ).toBe(true);
+    expect(
+      mainnetChecker.preCheck(
+        'bitcoincash:ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq'
+      )
+    ).toBe(true);
+    expect(
+      mainnetChecker.preCheck(
+        'bitcoincash:pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e'
+      )
+    ).toBe(true);
+    expect(
+      mainnetChecker.preCheck(
+        'bitcoincash:pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37'
+      )
+    ).toBe(true);
+    expect(
       mainnetChecker.preCheck('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqfnhks603')
     ).toBe(true);
   });
-  // it('should validated when use correct bch address', () => {});
+  // it('should validated when use wrong bch address', () => {
+
+  // });
 });
 
 describe('validate()', () => {
