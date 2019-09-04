@@ -42,6 +42,8 @@ describe('validate()', () => {
     expect(mainnetChecker.validate('3NJZLcZEEYBpxYEUGewU4knsQRn1WM5Fkt')).toBe(
       true
     );
+
+    // segwit address
     expect(
       mainnetChecker.validate('bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq')
     ).toBe(true);
@@ -57,8 +59,19 @@ describe('validate()', () => {
         'bc10w508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kw5rljs90'
       )
     ).toBe(false);
+
+    // segwit address
     expect(
       mainnetChecker.validate('BC1QR508D6QEJXTDG4Y5R3ZARVARYV98GJ9P')
+    ).toBe(false);
+    expect(
+      mainnetChecker.validate('bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t5')
+    ).toBe(false);
+    expect(mainnetChecker.validate('bc1rw5uspcuh')).toBe(false);
+    expect(
+      mainnetChecker.validate(
+        'bc10w508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kw5rljs90'
+      )
     ).toBe(false);
   });
 });

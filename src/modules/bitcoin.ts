@@ -22,7 +22,7 @@ class BitcoinChecker implements IChecker, ICoin {
   public validate(address: string): boolean {
     if (this.preCheck(address)) {
       // segwit address
-      if (address.substr(0, 2) === 'bc') {
+      if (this.isSegWitAddress(address)) {
         return this.validateBech32(address);
       }
       const addressType = this.getAddressType(address);
