@@ -59,6 +59,18 @@ describe('validate()', () => {
         'bc10w508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kw5rljs90'
       )
     ).toBe(false);
+    expect(mainnetChecker.validate('mzBc4XEFSdzCDcTxAgf6EZXgsZWpztRhef')).toBe(
+      false
+    );
+    expect(
+      mainnetChecker.validate('bd839e4f6fadb293ba580df5dea7814399989983')
+    ).toBe(false);
+    expect(mainnetChecker.validate('miCVC7QcY917Cz427qTBEUrvBzRapHrupc')).toBe(
+      false
+    );
+    expect(mainnetChecker.validate('rrRmhfXzGBKbV4YHtbpxfA1ftEcry8AJaX')).toBe(
+      false
+    );
 
     // segwit address
     expect(
