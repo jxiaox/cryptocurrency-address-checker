@@ -61,9 +61,30 @@ describe('preCheck()', () => {
       mainnetChecker.preCheck('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqfnhks603')
     ).toBe(true);
   });
-  // it('should validated when use wrong bch address', () => {
-
-  // });
+  it('should validated when use wrong bch address', () => {
+    // should fail when the version byte is invalid
+    expect(
+      mainnetChecker.preCheck(
+        'bitcoincash:zpm2qsznhks23z7629mms6s4cwef74vcwvrqekrq9w'
+      )
+    ).toBe(false);
+    // should fail when given an address with mixed letter case
+    expect(
+      mainnetChecker.preCheck(
+        'bitcoincash:QPM2QSZNHKS23Z7629MMS6s4cwef74vcwvY22GDX6A'
+      )
+    ).toBe(false);
+    expect(
+      mainnetChecker.preCheck(
+        'BitCOINcash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a'
+      )
+    ).toBe(false);
+    expect(
+      mainnetChecker.preCheck(
+        'BitCOINcash:QPM2QSZNHKS23Z7629MMS6s4cwef74vcwvY22GDX6A'
+      )
+    ).toBe(false);
+  });
 });
 
 describe('validate()', () => {
