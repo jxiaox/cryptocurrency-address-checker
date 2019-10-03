@@ -4,7 +4,7 @@ import { coinsConfig } from '@/utils/configs';
 import { Network_type } from '@/utils/constants';
 import web3 from 'web3';
 
-class EtherChecker implements IChecker, ICoin {
+class EthChecker implements IChecker, ICoin {
   public name: string;
   public symbol: string;
   public hashAlgorithm: string;
@@ -65,4 +65,4 @@ class EtherChecker implements IChecker, ICoin {
   }
 }
 
-export default EtherChecker;
+export default EthChecker;
