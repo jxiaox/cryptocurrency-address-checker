@@ -2,7 +2,7 @@ import IChecker from '@/interfaces/checker.interface';
 import ICoin from '@/interfaces/coin.interface';
 import { coinsConfig } from '@/utils/configs';
 import { Network_type } from '@/utils/constants';
-import web3 from 'web3';
+import * as Utils from 'web3-utils';
 
 class EthChecker implements IChecker, ICoin {
   public name: string;
@@ -28,9 +28,9 @@ class EthChecker implements IChecker, ICoin {
    *
    * @returns {Boolean}
    */
-  public validate(address: string): boolean {
+  public validate(address: string, chainId?: number): boolean {
     // check address regex or checksum address
-    return web3.utils.isAddress(address);
+    return Utils.isAddress(address, chainId);
   }
 
   /**
@@ -45,8 +45,8 @@ class EthChecker implements IChecker, ICoin {
    * @returns {Boolean}
    */
 
-  public checkAddressChecksum(address: string): boolean {
-    return web3.utils.checkAddressChecksum(address);
+  public checkAddressChecksum(address: string, chainId?: number): boolean {
+    return Utils.checkAddressChecksum(address, chainId);
   }
 
   /**
@@ -60,8 +60,8 @@ class EthChecker implements IChecker, ICoin {
    *
    * @returns {string} address with checksum applied.
    */
-  public toChecksumAddress(address: string): string {
-    return web3.utils.toChecksumAddress(address);
+  public toChecksumAddress(address: string, chainId?: number): string {
+    return Utils.toChecksumAddress(address, chainId);
   }
 }
 
