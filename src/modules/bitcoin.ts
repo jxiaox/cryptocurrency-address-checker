@@ -23,6 +23,10 @@ class BitcoinChecker implements IChecker, ICoin {
 
   public validate(address: string): boolean {
     if (this.preCheck(address)) {
+      // segwit address
+      if (address.substr(0, 2) === 'bc') {
+        return this.validateBech32(address);
+      }
       const addressType = this.getAddressType(address);
       if (addressType) {
         return coinsConfig.btc.addressTypes.includes(addressType);
@@ -81,6 +85,53 @@ class BitcoinChecker implements IChecker, ICoin {
       }
     }
     return null;
+  }
+
+  /**
+   * validate bech32 address
+   * https://www.reddit.com/r/Bitcoin/comments/62fydd/pieter_wuille_lecture_on_new_bech32_address_format/
+   *
+   * @protected
+   * @param {string} address
+   * @returns {boolean}
+   * @memberof BitcoinChecker
+   */
+  protected validateBech32(address: string): boolean {
+    let decoded: { prefix: string; words: Buffer };
+
+    try {
+      decoded = bech32.decode(address);
+    } catch (error) {
+      return false;
+    }
+
+    const witnessVersion = decoded.words[0];
+
+    if (witnessVersion < 0 || witnessVersion > 16) {
+      return false;
+    }
+
+    const data = bech32.fromWords(decoded.words.slice(1));
+
+    let type: string = '';
+
+    if (data.length === 20) {
+      type = 'p2wpkh';
+    } else if (data.length === 32) {
+      type = 'p2wsh';
+    }
+    console.log({
+      bech32: true,
+      type
+    });
+
+    // return {
+    //   bech32: true,
+    //   network,
+    //   address,
+    //   type
+    // };
+    return true;
   }
 
   protected getChecksum(payloadHex: Buffer): string {
