@@ -7,8 +7,7 @@ const config = {
     algorithm: 'SHA256',
     addressTypes: ['00', '05'],
     addressReg: [/^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$/],
-    segWitAddressReg: /^(bc|tb)1([023456789acdefghjklmnpqrstuvwxyz]+[023456789acdefghjklmnpqrstuvwxyz]{6})$/,
-    addressExpectedLength: 25
+    segWitAddressReg: /^(bc|tb)1([023456789acdefghjklmnpqrstuvwxyz]+[023456789acdefghjklmnpqrstuvwxyz]{6})$/
   },
   bch: {
     fullName: 'Bitcoin Cash',
@@ -18,8 +17,7 @@ const config = {
     addressReg: [
       /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/,
       /^((bitcoincash:)?(q|p)[a-z0-9]{41})/
-    ],
-    addressExpectedLength: 42 // remove <bitcoincash:>
+    ]
   },
   eth: {
     fullName: 'Ethereum',
@@ -30,11 +28,9 @@ const config = {
   ltc: {
     fullName: 'Litecoin',
     symbol: 'LTC',
-
     algorithm: 'SHA256',
     addressTypes: ['30', '05', '32'],
-    addressReg: [/^[LM3][a-km-zA-HJ-NP-Z1-9]{26,33}$/],
-    addressExpectedLength: 25
+    addressReg: [/^[LM3][a-km-zA-HJ-NP-Z1-9]{26,33}$/]
   }
 };
 

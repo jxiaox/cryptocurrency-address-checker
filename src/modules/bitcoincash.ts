@@ -16,7 +16,6 @@ class BitcoinCashChecker extends BitcoinChecker {
     this.hashAlgorithm = coinsConfig.btc.algorithm;
     this.name = coinsConfig.btc.fullName;
     this.symbol = coinsConfig.btc.symbol;
-    this.expectedLength = coinsConfig.bch.addressExpectedLength;
     this.bitcoinChecker = new BitcoinChecker(networkType);
   }
 

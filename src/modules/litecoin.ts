@@ -12,7 +12,6 @@ class LitecoinChecker extends BitcoinChecker {
     this.hashAlgorithm = coinsConfig.ltc.algorithm;
     this.name = coinsConfig.ltc.fullName;
     this.symbol = coinsConfig.ltc.symbol;
-    this.expectedLength = coinsConfig.ltc.addressExpectedLength;
   }
 
   public validate(address: string): boolean {
