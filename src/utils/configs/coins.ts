@@ -31,6 +31,14 @@ const config = {
     algorithm: 'SHA256',
     addressTypes: ['30', '05', '32'],
     addressReg: [/^[LM3][a-km-zA-HJ-NP-Z1-9]{26,33}$/]
+  },
+  xrp: {
+    fullName: 'Ripple',
+    symbol: 'XRP',
+    algorithm: 'The Ripple Protocol consensus algorithm (RPCA)',
+    addressReg: [
+      /^r[rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz]{27,35}$/
+    ]
   }
 };
 
