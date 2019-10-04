@@ -63,28 +63,34 @@ class BitcoinChecker implements IChecker, ICoin {
    * @memberof BitcoinChecker
    */
   protected getAddressType(address: string): string | null {
-    let decoded: Buffer;
-    if (this.isSegWitAddress(address)) {
-      const bechRes: { prefix: string; words: Buffer } = bech32.decode(address);
-      decoded = bechRes.words;
-    } else {
-      decoded = bs58.decode(address);
-    }
+    const decoded: Buffer = bs58.decode(address);
     if (this.isLegalAddress(address, decoded)) {
-      const decodedLength: number = decoded.length;
-
-      const decodedChecksum: string = toHex(
-        decoded.slice(decodedLength - 4, decodedLength)
-      );
-
-      const payloadHex: Buffer = decoded.slice(0, decodedLength - 4);
-
-      const payloadChecksum: string = this.getChecksum(payloadHex);
-      if (decodedChecksum === payloadChecksum) {
+      if (this.verifyChecksum(decoded)) {
         return toHex(decoded.slice(0, this.expectedLength - 24));
       }
     }
     return null;
+  }
+
+  /**
+   * 验证checksum
+   *
+   * @protected
+   * @param {Buffer} decoded
+   * @returns {boolean}
+   * @memberof XrpChecker
+   */
+  protected verifyChecksum(decoded: Buffer): boolean {
+    const decodedLength: number = decoded.length;
+
+    const decodedChecksum: string = toHex(
+      decoded.slice(decodedLength - 4, decodedLength)
+    );
+
+    const payloadHex: Buffer = decoded.slice(0, decodedLength - 4);
+
+    const payloadChecksum: string = this.getChecksum(payloadHex);
+    return decodedChecksum === payloadChecksum;
   }
 
   /**
