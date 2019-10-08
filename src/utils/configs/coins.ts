@@ -39,6 +39,12 @@ const config = {
     addressReg: [
       /^r[rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz]{27,35}$/
     ]
+  },
+  xlm: {
+    fullName: 'Stellar Lumens',
+    symbol: 'XLM',
+    algorithm: 'Federated Byzantine Agreement (FBA)',
+    addressReg: [/^(g|G)\w{55}$/]
   }
 };
 
