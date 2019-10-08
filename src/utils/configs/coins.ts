@@ -45,6 +45,12 @@ const config = {
     symbol: 'XLM',
     algorithm: 'Federated Byzantine Agreement (FBA)',
     addressReg: [/^(g|G)\w{55}$/]
+  },
+  ada: {
+    fullName: 'Cardano',
+    symbol: 'ADA',
+    algorithm: 'Ouroboros',
+    addressReg: [/^(A|D|4)\w{20,}$/]
   }
 };
 
