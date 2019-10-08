@@ -58,12 +58,16 @@ class XrpChecker implements IChecker, ICoin {
    * @memberof XrpChecker
    */
   protected verifyChecksum(address: string): boolean {
-    const bytes = RPCA.decode(address);
-    const computedChecksum = sha256(
-      sha256(bytes.slice(0, -4), 'buffer')
-    ).substr(0, 8);
-    const checksum = toHex(bytes.slice(-4));
-    return computedChecksum === checksum;
+    try {
+      const bytes = RPCA.decode(address);
+      const computedChecksum = sha256(
+        sha256(bytes.slice(0, -4), 'buffer')
+      ).substr(0, 8);
+      const checksum = toHex(bytes.slice(-4));
+      return computedChecksum === checksum;
+    } catch (error) {
+      return false;
+    }
   }
 }
 

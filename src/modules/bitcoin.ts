@@ -61,13 +61,17 @@ class BitcoinChecker implements IChecker, ICoin {
    * @memberof BitcoinChecker
    */
   protected getAddressType(address: string): string | null {
-    const decoded: Buffer = bs58.decode(address);
-    if (this.isLegalAddress(address, decoded)) {
-      if (this.verifyChecksum(decoded)) {
-        return toHex(decoded.slice(0, 1));
+    try {
+      const decoded: Buffer = bs58.decode(address);
+      if (this.isLegalAddress(address, decoded)) {
+        if (this.verifyChecksum(decoded)) {
+          return toHex(decoded.slice(0, 1));
+        }
       }
+      return null;
+    } catch (error) {
+      return null;
     }
-    return null;
   }
 
   /**

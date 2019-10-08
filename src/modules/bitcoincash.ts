@@ -63,8 +63,12 @@ class BitcoinCashChecker extends BitcoinChecker {
    * @memberof BitcoinChecker
    */
   protected getAddressType(address: string): string | null {
-    const obj = this.decode(address);
-    return obj.type;
+    try {
+      const obj = this.decode(address);
+      return obj.type;
+    } catch (error) {
+      return null;
+    }
   }
 }
 
