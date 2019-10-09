@@ -137,7 +137,7 @@ class BitcoinChecker implements IChecker, ICoin {
   }
 
   protected getChecksum(payloadHex: Buffer): string {
-    const hash = sha256(sha256(payloadHex, 'buffer'));
+    const hash = sha256(sha256(payloadHex, 'BUFFER'));
     return hash.substr(0, 8);
   }
 

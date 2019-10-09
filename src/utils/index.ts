@@ -46,6 +46,22 @@ export function toBuffer(arr: ArrayBuffer | Uint8Array): Buffer {
 }
 
 /**
+ * 转换为ArrayBuffer
+ *
+ * @export
+ * @param {Buffer} buf
+ * @returns {ArrayBuffer}
+ */
+export function toArrayBuffer(buf: Buffer): ArrayBuffer {
+  const ab = new ArrayBuffer(buf.length);
+  const view = new Uint8Array(ab);
+  for (let i = 0; i < buf.length; ++i) {
+    view[i] = buf[i];
+  }
+  return ab;
+}
+
+/**
  * Derives an array from the given prefix to be used in the computation
  * of the address' checksum.
  *

@@ -61,7 +61,7 @@ class XrpChecker implements IChecker, ICoin {
     try {
       const bytes = RPCA.decode(address);
       const computedChecksum = sha256(
-        sha256(bytes.slice(0, -4), 'buffer')
+        sha256(bytes.slice(0, -4), 'BUFFER')
       ).substr(0, 8);
       const checksum = toHex(bytes.slice(-4));
       return computedChecksum === checksum;
