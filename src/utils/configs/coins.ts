@@ -57,6 +57,12 @@ const config = {
     symbol: 'TRX',
     algorithm: 'Tpos',
     addressReg: [/^T\w{33}$/]
+  },
+  xmr: {
+    fullName: 'Monero',
+    symbol: 'XMR',
+    algorithm: 'CryptoNight',
+    addressReg: [/^4[0-9AB][1-9A-HJ-NP-Za-km-z]{93}$/]
   }
 };
 
