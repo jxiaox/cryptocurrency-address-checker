@@ -51,6 +51,12 @@ const config = {
     symbol: 'ADA',
     algorithm: 'Ouroboros',
     addressReg: [/^(A|D|4)\w{20,}$/]
+  },
+  trx: {
+    fullName: 'Tron',
+    symbol: 'TRX',
+    algorithm: 'Tpos',
+    addressReg: [/^T\w{33}$/]
   }
 };
 
