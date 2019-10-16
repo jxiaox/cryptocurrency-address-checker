@@ -52,6 +52,7 @@
     "node": ">=8.9"
   },
   "dependencies": {
+    "@iota/checksum": "^1.0.0-beta.21",
     "@types/bech32": "^1.1.1",
     "@types/bs58": "^4.0.0",
     "@types/jssha": "^2.0.0",

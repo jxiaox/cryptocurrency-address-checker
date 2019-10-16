@@ -146,6 +146,29 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@iota/checksum@^1.0.0-beta.21":
+  version "1.0.0-beta.21"
+  resolved "https://registry.yarnpkg.com/@iota/checksum/-/checksum-1.0.0-beta.21.tgz#7ba1fba95affa73a3a44ac9455a22b59961762f5"
+  integrity sha512-v5JUJrta3DQxCj246mgg80QZZvw1p457t4WM9Do8zObiyKRaF6gXTasNW9L8LPXcCiXBGSUQchyvvQ0x28tPow==
+  dependencies:
+    "@iota/converter" "^1.0.0-beta.21"
+    "@iota/kerl" "^1.0.0-beta.21"
+
+"@iota/converter@^1.0.0-beta.21":
+  version "1.0.0-beta.21"
+  resolved "https://registry.yarnpkg.com/@iota/converter/-/converter-1.0.0-beta.21.tgz#ea94bb738cf1df753530e60a2089ee187622fae2"
+  integrity sha512-voiOZyaCCCTQ0rAwkwkuMAhuz4yLanPVd1nmZe0Jh1OeksQWZzlnJL7QQcBP4k4LZvRKw0sb1FyIKIsDJfdyig==
+  dependencies:
+    core-js "^3.1.4"
+
+"@iota/kerl@^1.0.0-beta.21":
+  version "1.0.0-beta.21"
+  resolved "https://registry.yarnpkg.com/@iota/kerl/-/kerl-1.0.0-beta.21.tgz#8e8760056af469af5fc4239411d270ae7187a10d"
+  integrity sha512-JzarmedEpLvs8ZlA37FqaOcU6rJIiSJbEjkJMZiDm3ZWcAgqcnzfEqyT3RDn2capPsQ3maiVgL60oFueizMbNQ==
+  dependencies:
+    "@types/crypto-js" "^3.1.38"
+    crypto-js "^3.1.9-1"
+
 "@jest/console@^24.7.1":
   version "24.7.1"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.7.1.tgz#32a9e42535a97aedfe037e725bd67e954b459545"
@@ -364,6 +387,11 @@
   integrity sha512-gYX+MHD4G/R+YGYwdhG5gbJj4LsEQGr3Vg6gVDAbe7xC5Bn8dNNG2Lpo6uDX/rT5dE7VBj0rGEFuV8L0AEx4Rg==
   dependencies:
     "@types/base-x" "*"
+
+"@types/crypto-js@^3.1.38":
+  version "3.1.43"
+  resolved "https://registry.yarnpkg.com/@types/crypto-js/-/crypto-js-3.1.43.tgz#b859347d6289ba13e347c335a4c9efa63337a748"
+  integrity sha512-EHe/YKctU3IYNBsDmSOPX/7jLHPRlx8WaiDKSY9JCTnJ8XJeM4c0ZJvx+9Gxmr2s2ihI92R+3U/gNL1sq5oRuQ==
 
 "@types/events@*":
   version "3.0.0"
@@ -1357,6 +1385,11 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
+core-js@^3.1.4:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.3.2.tgz#cd42da1d7b0bb33ef11326be3a721934277ceb42"
+  integrity sha512-S1FfZpeBchkhyoY76YAdFzKS4zz9aOK7EeFaNA2aJlyXyA+sgqz6xdxmLPGXEAf0nF44MVN1kSjrA9Kt3ATDQg==
+
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -1404,6 +1437,11 @@ cross-spawn@^6.0.0, cross-spawn@^6.0.5:
     semver "^5.5.0"
     shebang-command "^1.2.0"
     which "^1.2.9"
+
+crypto-js@^3.1.9-1:
+  version "3.1.9-1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.1.9-1.tgz#fda19e761fc077e01ffbfdc6e9fdfc59e8806cd8"
+  integrity sha1-/aGedh/Ad+Af+/3G6f38WeiAbNg=
 
 "cssom@>= 0.3.2 < 0.4.0", cssom@~0.3.6:
   version "0.3.6"

@@ -63,6 +63,12 @@ const config = {
     symbol: 'XMR',
     algorithm: 'CryptoNight',
     addressReg: [/^4[0-9AB][1-9A-HJ-NP-Za-km-z]{93}$/]
+  },
+  iota: {
+    fullName: 'IOTA',
+    symbol: 'IOTA',
+    algorithm: 'Tangle',
+    addressReg: [/^\w{90}$/]
   }
 };
 
