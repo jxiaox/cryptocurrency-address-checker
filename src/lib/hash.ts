@@ -32,12 +32,10 @@ export function sha256(
   }
 }
 
-export function sha3(message: string | Buffer): string;
-export function sha3(message: string | Buffer, type: ShaDataFormat): Buffer;
 export function sha3(
   message: string | Buffer,
   type: ShaDataFormat = 'HEX'
-): string | Buffer {
+): string {
   const shaObj = new jsSHA('SHA3-256', 'TEXT');
   if (type === 'BUFFER') {
     shaObj.setHMACKey(toArrayBuffer(message as Buffer), 'ARRAYBUFFER');
