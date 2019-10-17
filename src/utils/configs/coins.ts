@@ -76,6 +76,12 @@ const config = {
     algorithm: 'X11',
     addressReg: [/^X[1-9A-HJ-NP-Za-km-z]{33}$/],
     addressTypes: ['4c', '10']
+  },
+  atom: {
+    fullName: 'Cosmos',
+    symbol: 'ATOM',
+    algorithm: 'Tendermint',
+    addressReg: [/^cosmos1\w{38}$/]
   }
 };
 
