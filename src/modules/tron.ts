@@ -55,7 +55,7 @@ class TRXChecker implements IChecker, ICoin {
     try {
       const bytes = bs58.decode(address);
       const computedChecksum = sha256(
-        sha256(bytes.slice(0, -4), 'buffer')
+        sha256(bytes.slice(0, -4), 'BUFFER')
       ).substr(0, 8);
       const checksum = toHex(bytes.slice(-4));
       return computedChecksum === checksum;
