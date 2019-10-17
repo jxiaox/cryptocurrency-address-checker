@@ -69,6 +69,13 @@ const config = {
     symbol: 'IOTA',
     algorithm: 'Tangle',
     addressReg: [/^\w{90}$/]
+  },
+  dash: {
+    fullName: 'Dash',
+    symbol: 'DASH',
+    algorithm: 'X11',
+    addressReg: [/^X[1-9A-HJ-NP-Za-km-z]{33}$/],
+    addressTypes: ['4c', '10']
   }
 };
 
