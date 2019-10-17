@@ -1,9 +1,19 @@
 import IChecker from '@/interfaces/checker.interface';
 import ICoin from '@/interfaces/coin.interface';
-import { bs58, sha3 } from '@/lib/hash';
-import { toHex } from '@/utils';
 import { coinsConfig } from '@/utils/configs';
 import { Network_type } from '@/utils/constants';
+import { cnBase58 } from '@xmr-core/xmr-b58';
+import {
+  ADDRESS_CHECKSUM_SIZE,
+  INTEGRATED_ID_SIZE
+} from '@xmr-core/xmr-constants';
+import { cn_fast_hash } from '@xmr-core/xmr-fast-hash';
+// tslint:disable-next-line:no-implicit-dependencies
+import { encode_varint } from '@xmr-core/xmr-varint';
+
+const __MAINNET_CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 18;
+const __MAINNET_CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 19;
+const __MAINNET_CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 42;
 
 class XMRChecker implements IChecker, ICoin {
   public name: string;
@@ -54,26 +64,55 @@ class XMRChecker implements IChecker, ICoin {
    */
   protected verifyChecksum(address: string): boolean {
     try {
-      const decoded: Buffer = bs58.decode(address);
-      const st = sha3(decoded.slice(0, 130), 'BUFFER');
-      const computedChecksum = st.substr(0, 8);
-      const checksum = toHex(decoded.slice(-4));
-      const ss = toHex(decoded.slice(-8));
-      console.log(st, ss);
+      let dec = cnBase58.decode(address);
+      const expectedPrefix = encode_varint(
+        __MAINNET_CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX
+      );
+      const expectedPrefixInt = encode_varint(
+        __MAINNET_CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX
+      );
+      const expectedPrefixSub = encode_varint(
+        __MAINNET_CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX
+      );
+      const prefix = dec.slice(0, expectedPrefix.length);
+      if (
+        prefix !== expectedPrefix &&
+        prefix !== expectedPrefixInt &&
+        prefix !== expectedPrefixSub
+      ) {
+        throw Error('Invalid address prefix');
+      }
+      dec = dec.slice(expectedPrefix.length);
+      const spend = dec.slice(0, 64);
+      const view = dec.slice(64, 128);
+      let checksum;
+      let expectedChecksum;
+      let intPaymentId;
 
-      return computedChecksum === checksum;
+      if (prefix === expectedPrefixInt) {
+        intPaymentId = dec.slice(128, 128 + INTEGRATED_ID_SIZE * 2);
+        checksum = dec.slice(
+          128 + INTEGRATED_ID_SIZE * 2,
+          128 + INTEGRATED_ID_SIZE * 2 + ADDRESS_CHECKSUM_SIZE * 2
+        );
+        expectedChecksum = cn_fast_hash(
+          prefix + spend + view + intPaymentId
+        ).slice(0, ADDRESS_CHECKSUM_SIZE * 2);
+      } else {
+        checksum = dec.slice(128, 128 + ADDRESS_CHECKSUM_SIZE * 2);
+        expectedChecksum = cn_fast_hash(prefix + spend + view).slice(
+          0,
+          ADDRESS_CHECKSUM_SIZE * 2
+        );
+      }
+      if (checksum !== expectedChecksum) {
+        throw Error('Invalid checksum');
+      }
+      return true;
     } catch (error) {
       return false;
     }
   }
-
-  // protected verifyChecksum(address: string): boolean {
-  //   try {
-  //     const bytes = bs58.decode(address);
-  //     const computedChecksum = sha256(
-  //       sha256(bytes.slice(0, -4), 'buffer')
-  //     ).substr(0, 8);
-  //     const checksum = toHex(bytes.slice(-4));
 }
 
 export default XMRChecker;
