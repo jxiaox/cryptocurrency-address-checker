@@ -88,6 +88,12 @@ const config = {
     symbol: 'NEO',
     algorithm: 'SHA256',
     addressReg: [/^A[0-9a-zA-Z]{33}$/]
+  },
+  doge: {
+    fullName: 'Dogecoin',
+    symbol: 'DOGE',
+    algorithm: 'Scrypt',
+    addressReg: [/^D{1}[5-9A-HJ-NP-U]{1}[1-9A-HJ-NP-Za-km-z]{32}$/]
   }
 };
 
