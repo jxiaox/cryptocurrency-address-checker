@@ -94,6 +94,12 @@ const config = {
     symbol: 'DOGE',
     algorithm: 'Scrypt',
     addressReg: [/^D{1}[5-9A-HJ-NP-U]{1}[1-9A-HJ-NP-Za-km-z]{32}$/]
+  },
+  zec: {
+    fullName: 'Zcash',
+    symbol: 'ZEC',
+    algorithm: 'Equihash',
+    addressReg: [/^t1[a-zA-Z0-9]{33}$/]
   }
 };
 
