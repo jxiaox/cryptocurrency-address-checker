@@ -82,6 +82,12 @@ const config = {
     symbol: 'ATOM',
     algorithm: 'Tendermint',
     addressReg: [/^cosmos1\w{38}$/]
+  },
+  neo: {
+    fullName: 'NEO',
+    symbol: 'NEO',
+    algorithm: 'SHA256',
+    addressReg: [/^A[0-9a-zA-Z]{33}$/]
   }
 };
 
