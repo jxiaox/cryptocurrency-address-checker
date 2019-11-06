@@ -100,6 +100,12 @@ const config = {
     symbol: 'ZEC',
     algorithm: 'Equihash',
     addressReg: [/^t1[a-zA-Z0-9]{33}$/]
+  },
+  xem: {
+    fullName: 'NEM',
+    symbol: 'XEM',
+    algorithm: 'POI',
+    addressReg: [/^n\w{5}-\w{6}-\w{6}-\w{6}-\w{6}-\w{6}-\w{4}$/]
   }
 };
 
