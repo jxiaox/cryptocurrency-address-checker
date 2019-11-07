@@ -106,6 +106,12 @@ const config = {
     symbol: 'XEM',
     algorithm: 'POI',
     addressReg: [/^n\w{5}-\w{6}-\w{6}-\w{6}-\w{6}-\w{6}-\w{4}$/]
+  },
+  vsys: {
+    fullName: 'V Systems',
+    symbol: 'VSYS',
+    algorithm: 'SPoS',
+    addressReg: [/^A\w{34}$/]
   }
 };
 

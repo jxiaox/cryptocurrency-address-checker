@@ -1,9 +1,10 @@
 import { toArrayBuffer } from '@/utils';
+import Blake2b from 'blake2b';
 import bs58 from 'bs58';
+import { keccak256 } from 'js-sha3';
 import jsSHA from 'jssha';
 import shaJs from 'sha.js';
 import * as base32 from './base32';
-
 type ShaDataFormat = 'HEX' | 'TEXT' | 'BUFFER';
 
 /**
@@ -42,8 +43,14 @@ export function sha3(
   } else {
     shaObj.setHMACKey(message as string, 'TEXT');
   }
-
   return shaObj.getHMAC('HEX');
 }
+export function blake2b(input: Buffer): Uint8Array {
+  const output = new Uint8Array(32);
+  Blake2b(output.length)
+    .update(input)
+    .digest(output);
+  return output;
+}
 
-export { bs58, base32 };
+export { bs58, base32, keccak256 };
