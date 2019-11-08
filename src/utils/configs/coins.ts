@@ -124,6 +124,12 @@ const config = {
     symbol: 'QTUM',
     algorithm: 'POS 3.0',
     addressReg: [/^Q\w{33}$/]
+  },
+  nano: {
+    fullName: 'Nano',
+    symbol: 'NANO',
+    algorithm: 'Directed Acyclic Graph (DAG)',
+    addressReg: [/^(nano|xrb)_[13]\w{51}\w{8}$/]
   }
 };
 
