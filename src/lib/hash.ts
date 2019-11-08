@@ -5,6 +5,7 @@ import { keccak256 } from 'js-sha3';
 import jsSHA from 'jssha';
 import shaJs from 'sha.js';
 import * as base32 from './base32';
+import Blake256 from './blake256';
 type ShaDataFormat = 'HEX' | 'TEXT' | 'BUFFER';
 
 /**
@@ -33,10 +34,7 @@ export function sha256(
   }
 }
 
-export function sha3(
-  message: string | Buffer,
-  type: ShaDataFormat = 'HEX'
-): string {
+function sha3(message: string | Buffer, type: ShaDataFormat = 'HEX'): string {
   const shaObj = new jsSHA('SHA3-256', 'TEXT');
   if (type === 'BUFFER') {
     shaObj.setHMACKey(toArrayBuffer(message as Buffer), 'ARRAYBUFFER');
@@ -45,7 +43,7 @@ export function sha3(
   }
   return shaObj.getHMAC('HEX');
 }
-export function blake2b(input: Buffer): Uint8Array {
+function blake2b(input: Buffer): Uint8Array {
   const output = new Uint8Array(32);
   Blake2b(output.length)
     .update(input)
@@ -53,4 +51,8 @@ export function blake2b(input: Buffer): Uint8Array {
   return output;
 }
 
-export { bs58, base32, keccak256 };
+function blake256(hexString: string): string {
+  return new Blake256().update(hexString, 'hex').digest('hex');
+}
+
+export { bs58, sha3, base32, blake2b, keccak256, blake256 };

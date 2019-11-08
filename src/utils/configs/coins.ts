@@ -112,6 +112,12 @@ const config = {
     symbol: 'VSYS',
     algorithm: 'SPoS',
     addressReg: [/^A\w{34}$/]
+  },
+  dcr: {
+    fullName: 'Decred',
+    symbol: 'DCR',
+    algorithm: 'BLAKE256 R14',
+    addressReg: [/^D[kseSc]\w{33}$/]
   }
 };
 
