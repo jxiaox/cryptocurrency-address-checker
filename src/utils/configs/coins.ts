@@ -118,6 +118,12 @@ const config = {
     symbol: 'DCR',
     algorithm: 'BLAKE256 R14',
     addressReg: [/^D[kseSc]\w{33}$/]
+  },
+  qtum: {
+    fullName: 'Qtum',
+    symbol: 'QTUM',
+    algorithm: 'POS 3.0',
+    addressReg: [/^Q\w{33}$/]
   }
 };
 
