@@ -1,3 +1,3 @@
-# cryptocoin-address-checker
+# cryptocurrency-address-checker
 
-cryptocoin-address-checker
+cryptocurrency-address-checker
