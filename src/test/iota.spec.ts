@@ -53,43 +53,43 @@ describe('validate()', () => {
   const mainnetChecker = new IOTAChecker();
   it('should validated when use correct iota address', () => {
     expect(
-      mainnetChecker.validate(
+      mainnetChecker.isValid(
         'PK9JQCNXRHVFKLFTXZFP9DMTDBAWVLHFYCGHZKVBQLP9FYNACAXYTDXRXDDWTWXENDDSMTVTELNWZKQHINTOZPV9ZC'
       )
     ).toBe(true);
     expect(
-      mainnetChecker.validate(
+      mainnetChecker.isValid(
         'UYEEERFQYTPFAHIPXDQAQYWYMSMCLMGBTYAXLWFRFFWPYFOICOVLK9A9VYNCKK9TQUNBTARCEQXJHD9VYXOEDEOMRC'
       )
     ).toBe(true);
   });
 
   it('should failed when use wrong iota address', () => {
-    expect(mainnetChecker.validate('')).toBe(false);
-    expect(mainnetChecker.validate('D123')).toBe(false);
+    expect(mainnetChecker.isValid('')).toBe(false);
+    expect(mainnetChecker.isValid('D123')).toBe(false);
     expect(
-      mainnetChecker.validate(
+      mainnetChecker.isValid(
         'JALLWDUOSTSJVL9EEHKW9YQFPBVBJAGLNKRVGSQZCGHQWEMIIILJMTHVAGVDXJVZMBAMOZTSBQNRVNLLS'
       )
     ).toBe(false);
     // invalid base58 string
     expect(
-      mainnetChecker.validate(
+      mainnetChecker.isValid(
         'JALLWDUOSTSJVL9EEHKW9YQFPBVBJAGLNKRVGSQZCGHQWEMIIILJMTHVAGVDXJVZMBAMOZTSBQNR'
       )
     ).toBe(false);
     expect(
-      mainnetChecker.validate(
+      mainnetChecker.isValid(
         'JALLWDUOSTSJVL9EEHKW9YQFPBVBJAGLNKRVGSQZCGHQWEMIIILJMTHVAGVDXJVZMBAMOZTSBQNRVNLLSJMPIVGPNF'
       )
     ).toBe(false);
     expect(
-      mainnetChecker.validate(
+      mainnetChecker.isValid(
         '123adfdsafLWDUOSTSJVL9EEHKW9YQFPBVBJAGLNKRVGSQZCGHQWEMIIILJMTHVAGVDXJVZMBAMOZTSBQNRVNLLASD'
       )
     ).toBe(false);
     expect(
-      mainnetChecker.validate(
+      mainnetChecker.isValid(
         '123adfdsafLWDUOSTSJVL9EEHKW9YQFPBVBJAGLNKRVGSQZCGHQWEMIIILJMTHVAGVDXJVZMBAMOZTSBQNRVNLLA#@'
       )
     ).toBe(false);

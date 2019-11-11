@@ -66,60 +66,60 @@ describe('validate()', () => {
   // mainnet
   const mainnetChecker = new LitecoinChecker();
   it('should validated when use correct ltc address', () => {
-    expect(mainnetChecker.validate('LVg2kJoFNg45Nbpy53h7Fe1wKyeXVRhMH9')).toBe(
+    expect(mainnetChecker.isValid('LVg2kJoFNg45Nbpy53h7Fe1wKyeXVRhMH9')).toBe(
       true
     );
-    expect(mainnetChecker.validate('LTpYZG19YmfvY2bBDYtCKpunVRw7nVgRHW')).toBe(
+    expect(mainnetChecker.isValid('LTpYZG19YmfvY2bBDYtCKpunVRw7nVgRHW')).toBe(
       true
     );
-    expect(mainnetChecker.validate('Lb6wDP2kHGyWC7vrZuZAgV7V4ECyDdH7a6')).toBe(
+    expect(mainnetChecker.isValid('Lb6wDP2kHGyWC7vrZuZAgV7V4ECyDdH7a6')).toBe(
       true
     );
-    expect(mainnetChecker.validate('LiL8HvSJRDgnS5BXATWe5MzWYicCbRvisr')).toBe(
+    expect(mainnetChecker.isValid('LiL8HvSJRDgnS5BXATWe5MzWYicCbRvisr')).toBe(
       true
     );
-    expect(mainnetChecker.validate('3NJZLcZEEYBpxYEUGewU4knsQRn1WM5Fkt')).toBe(
+    expect(mainnetChecker.isValid('3NJZLcZEEYBpxYEUGewU4knsQRn1WM5Fkt')).toBe(
       true
     );
   });
 
   it('should failed when use wrong ltc address', () => {
-    expect(mainnetChecker.validate('')).toBe(false);
-    expect(mainnetChecker.validate('L123')).toBe(false);
-    expect(mainnetChecker.validate('mzBc4XEFSdzCDcTxAgf6EZXgsZWpztRhe')).toBe(
+    expect(mainnetChecker.isValid('')).toBe(false);
+    expect(mainnetChecker.isValid('L123')).toBe(false);
+    expect(mainnetChecker.isValid('mzBc4XEFSdzCDcTxAgf6EZXgsZWpztRhe')).toBe(
       false
     );
-    expect(mainnetChecker.validate('mzBc4XEFSdzCDcTxAgf6EZXgsZWpztRhef')).toBe(
+    expect(mainnetChecker.isValid('mzBc4XEFSdzCDcTxAgf6EZXgsZWpztRhef')).toBe(
       false
     );
     expect(
-      mainnetChecker.validate('bd839e4f6fadb293ba580df5dea7814399989983')
+      mainnetChecker.isValid('bd839e4f6fadb293ba580df5dea7814399989983')
     ).toBe(false);
-    expect(mainnetChecker.validate('miCVC7QcY917Cz427qTBEUrvBzRapHrupc')).toBe(
+    expect(mainnetChecker.isValid('miCVC7QcY917Cz427qTBEUrvBzRapHrupc')).toBe(
       false
     );
-    expect(mainnetChecker.validate('rrRmhfXzGBKbV4YHtbpxfA1ftEcry8AJaX')).toBe(
+    expect(mainnetChecker.isValid('rrRmhfXzGBKbV4YHtbpxfA1ftEcry8AJaX')).toBe(
       false
     );
 
     // bitcoin addresses
-    expect(mainnetChecker.validate('12KYrjTdVGjFMtaxERSk3gphreJ5US8aUP')).toBe(
+    expect(mainnetChecker.isValid('12KYrjTdVGjFMtaxERSk3gphreJ5US8aUP')).toBe(
       false
     );
-    expect(mainnetChecker.validate('12QeMLzSrB8XH8FvEzPMVoRxVAzTr5XM2y')).toBe(
+    expect(mainnetChecker.isValid('12QeMLzSrB8XH8FvEzPMVoRxVAzTr5XM2y')).toBe(
       false
     );
-    expect(mainnetChecker.validate('1oNLrsHnBcR6dpaBpwz3LSwutbUNkNSjs')).toBe(
+    expect(mainnetChecker.isValid('1oNLrsHnBcR6dpaBpwz3LSwutbUNkNSjs')).toBe(
       false
     );
-    expect(mainnetChecker.validate('1SQHtwR5oJRKLfiWQ2APsAd9miUc4k2ez')).toBe(
+    expect(mainnetChecker.isValid('1SQHtwR5oJRKLfiWQ2APsAd9miUc4k2ez')).toBe(
       false
     );
-    expect(mainnetChecker.validate('116CGDLddrZhMrTwhCVJXtXQpxygTT1kHd')).toBe(
+    expect(mainnetChecker.isValid('116CGDLddrZhMrTwhCVJXtXQpxygTT1kHd')).toBe(
       false
     );
 
     // invalid base58 string
-    expect(mainnetChecker.validate('%%@')).toBe(false);
+    expect(mainnetChecker.isValid('%%@')).toBe(false);
   });
 });

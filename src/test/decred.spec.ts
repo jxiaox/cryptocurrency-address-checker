@@ -34,27 +34,27 @@ describe('validate()', () => {
   // mainnet
   const mainnetChecker = new DCRChecker();
   it('should validated when use correct dcr address', () => {
-    expect(mainnetChecker.validate('Dsesax2GJnMN4wwmWo5rJGq73dDK217Rh85')).toBe(
+    expect(mainnetChecker.isValid('Dsesax2GJnMN4wwmWo5rJGq73dDK217Rh85')).toBe(
       true
     );
-    expect(mainnetChecker.validate('DsYuxtvGRfN8rncXAndtLUpJm55F77K17RA')).toBe(
+    expect(mainnetChecker.isValid('DsYuxtvGRfN8rncXAndtLUpJm55F77K17RA')).toBe(
       true
     );
-    expect(mainnetChecker.validate('DsaXDG2NrJW8g4tFAb8n9MNx81Sn3Qc8AEV')).toBe(
+    expect(mainnetChecker.isValid('DsaXDG2NrJW8g4tFAb8n9MNx81Sn3Qc8AEV')).toBe(
       true
     );
-    expect(mainnetChecker.validate('DcqxSik4CU5sEZL289xpnCppuAuo3xJJMiX')).toBe(
+    expect(mainnetChecker.isValid('DcqxSik4CU5sEZL289xpnCppuAuo3xJJMiX')).toBe(
       true
     );
   });
 
   it('should failed when use wrong dcr address', () => {
-    expect(mainnetChecker.validate('')).toBe(false);
-    expect(mainnetChecker.validate('D123')).toBe(false);
-    expect(mainnetChecker.validate('Dsesax2GJnMN4wwmWo5rJGq73dDK217Rh8!')).toBe(
+    expect(mainnetChecker.isValid('')).toBe(false);
+    expect(mainnetChecker.isValid('D123')).toBe(false);
+    expect(mainnetChecker.isValid('Dsesax2GJnMN4wwmWo5rJGq73dDK217Rh8!')).toBe(
       false
     );
-    expect(mainnetChecker.validate('DsExampleAddr1For2Demo3PurposesOnly')).toBe(
+    expect(mainnetChecker.isValid('DsExampleAddr1For2Demo3PurposesOnly')).toBe(
       false
     );
   });

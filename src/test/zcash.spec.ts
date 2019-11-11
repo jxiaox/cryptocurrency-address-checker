@@ -43,43 +43,43 @@ describe('validate()', () => {
   // mainnet
   const mainnetChecker = new ZcashChecker();
   it('should validated when use correct zcash address', () => {
-    expect(mainnetChecker.validate('t1TS7ytTTq6vreSTuNkdqosMiBwh79KkBAd')).toBe(
+    expect(mainnetChecker.isValid('t1TS7ytTTq6vreSTuNkdqosMiBwh79KkBAd')).toBe(
       true
     );
-    expect(mainnetChecker.validate('t1PdVEJq7EDPhEkUS4jGBXhA8SfewenKcBb')).toBe(
+    expect(mainnetChecker.isValid('t1PdVEJq7EDPhEkUS4jGBXhA8SfewenKcBb')).toBe(
       true
     );
-    expect(mainnetChecker.validate('t1KVcK1PEFHRjzJTA3oeXA82tiUGj5V72Cb')).toBe(
+    expect(mainnetChecker.isValid('t1KVcK1PEFHRjzJTA3oeXA82tiUGj5V72Cb')).toBe(
       true
     );
-    expect(mainnetChecker.validate('t1Lz3716E9ReWJABhVkYUpenSDHMis9YXjk')).toBe(
+    expect(mainnetChecker.isValid('t1Lz3716E9ReWJABhVkYUpenSDHMis9YXjk')).toBe(
       true
     );
-    expect(mainnetChecker.validate('t1KVcK1PEFHRjzJTA3oeXA82tiUGj5V72Cb')).toBe(
+    expect(mainnetChecker.isValid('t1KVcK1PEFHRjzJTA3oeXA82tiUGj5V72Cb')).toBe(
       true
     );
   });
 
   it('should failed when use wrong zcash address', () => {
-    expect(mainnetChecker.validate('')).toBe(false);
-    expect(mainnetChecker.validate('L123')).toBe(false);
+    expect(mainnetChecker.isValid('')).toBe(false);
+    expect(mainnetChecker.isValid('L123')).toBe(false);
     // invalid base58 string
-    expect(mainnetChecker.validate('%%@')).toBe(false);
+    expect(mainnetChecker.isValid('%%@')).toBe(false);
 
-    expect(mainnetChecker.validate('TKsf1234dfs')).toBe(false);
-    expect(mainnetChecker.validate('BGDw56w7MU1WSK2MFNUcPWxZPV2LhuBmCc')).toBe(
+    expect(mainnetChecker.isValid('TKsf1234dfs')).toBe(false);
+    expect(mainnetChecker.isValid('BGDw56w7MU1WSK2MFNUcPWxZPV2LhuBmCc')).toBe(
       false
     );
-    expect(mainnetChecker.validate('t1PdVEJq7EDPhEkUS4jGBXhA8SfewenKcB')).toBe(
+    expect(mainnetChecker.isValid('t1PdVEJq7EDPhEkUS4jGBXhA8SfewenKcB')).toBe(
       false
     );
-    expect(mainnetChecker.validate('t1PdVEJq7EDPhEkUS4jGBXhA8Sfewen^&!')).toBe(
+    expect(mainnetChecker.isValid('t1PdVEJq7EDPhEkUS4jGBXhA8Sfewen^&!')).toBe(
       false
     );
-    expect(mainnetChecker.validate('z1KVcK1PEFHRjzJTA3oeXA82tiUGj5V72Cb')).toBe(
+    expect(mainnetChecker.isValid('z1KVcK1PEFHRjzJTA3oeXA82tiUGj5V72Cb')).toBe(
       false
     );
-    expect(mainnetChecker.validate('t1PdVEJq7EDPhEkUS4jGBXhA8SfewenKcB1')).toBe(
+    expect(mainnetChecker.isValid('t1PdVEJq7EDPhEkUS4jGBXhA8SfewenKcB1')).toBe(
       false
     );
   });

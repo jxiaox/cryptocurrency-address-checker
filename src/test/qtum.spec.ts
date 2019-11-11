@@ -43,39 +43,39 @@ describe('validate()', () => {
   // mainnet
   const mainnetChecker = new QTUMChecker();
   it('should validated when use correct qtum address', () => {
-    expect(mainnetChecker.validate('QNjUiD3bVVZwYTc5AhpeQbS1mfb2guyWhe')).toBe(
+    expect(mainnetChecker.isValid('QNjUiD3bVVZwYTc5AhpeQbS1mfb2guyWhe')).toBe(
       true
     );
-    expect(mainnetChecker.validate('QVZnSrMwKp6AL4FjUPPnfFgsma6j1DXQXu')).toBe(
+    expect(mainnetChecker.isValid('QVZnSrMwKp6AL4FjUPPnfFgsma6j1DXQXu')).toBe(
       true
     );
-    expect(mainnetChecker.validate('Qb15HZYiDtqozMTXa2MF64dGhKEUbmpHYc')).toBe(
+    expect(mainnetChecker.isValid('Qb15HZYiDtqozMTXa2MF64dGhKEUbmpHYc')).toBe(
       true
     );
-    expect(mainnetChecker.validate('QWPhsWtJENsQq2wywwjottco2qNwaDiA3k')).toBe(
+    expect(mainnetChecker.isValid('QWPhsWtJENsQq2wywwjottco2qNwaDiA3k')).toBe(
       true
     );
-    expect(mainnetChecker.validate('QU2uZUQGXB7hiXXWdda4K13sSunxu1kQqE')).toBe(
+    expect(mainnetChecker.isValid('QU2uZUQGXB7hiXXWdda4K13sSunxu1kQqE')).toBe(
       true
     );
-    expect(mainnetChecker.validate('QRnEjuAh8VZhZhEJCNLmAj2G7jMinEAn26')).toBe(
+    expect(mainnetChecker.isValid('QRnEjuAh8VZhZhEJCNLmAj2G7jMinEAn26')).toBe(
       true
     );
   });
 
   it('should failed when use wrong qtum address', () => {
-    expect(mainnetChecker.validate('')).toBe(false);
-    expect(mainnetChecker.validate('L123')).toBe(false);
+    expect(mainnetChecker.isValid('')).toBe(false);
+    expect(mainnetChecker.isValid('L123')).toBe(false);
     // invalid base58 string
-    expect(mainnetChecker.validate('%%@')).toBe(false);
+    expect(mainnetChecker.isValid('%%@')).toBe(false);
 
-    expect(mainnetChecker.validate('QRnEjuAh8VZhZhEJCNLmAj2G7jMinEAn2!')).toBe(
+    expect(mainnetChecker.isValid('QRnEjuAh8VZhZhEJCNLmAj2G7jMinEAn2!')).toBe(
       false
     );
-    expect(mainnetChecker.validate('1RnEjuAh8VZhZhEJCNLmAj2G7jMinEAn26')).toBe(
+    expect(mainnetChecker.isValid('1RnEjuAh8VZhZhEJCNLmAj2G7jMinEAn26')).toBe(
       false
     );
-    expect(mainnetChecker.validate('QRnEjuAh8VZhZhEJCNLmAj2G7jMinEAn2d')).toBe(
+    expect(mainnetChecker.isValid('QRnEjuAh8VZhZhEJCNLmAj2G7jMinEAn2d')).toBe(
       false
     );
   });

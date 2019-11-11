@@ -14,7 +14,7 @@ class LitecoinChecker extends BitcoinChecker {
     this.symbol = coinsConfig.ltc.symbol;
   }
 
-  public validate(address: string): boolean {
+  public isValid(address: string): boolean {
     if (this.preCheck(address)) {
       const addressType = this.getAddressType(address);
       if (addressType) {

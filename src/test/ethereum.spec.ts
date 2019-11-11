@@ -17,7 +17,7 @@ describe('validate()', () => {
     ];
 
     tests.forEach(test => {
-      expect(mainnetChecker.validate(test.value)).toEqual(test.is);
+      expect(mainnetChecker.isValid(test.value)).toEqual(test.is);
     });
   });
 
@@ -33,7 +33,7 @@ describe('validate()', () => {
     ];
 
     tests.forEach(test => {
-      expect(mainnetChecker.validate(test.value, 30)).toEqual(test.is);
+      expect(mainnetChecker.isValid(test.value, 30)).toEqual(test.is);
     });
   });
 

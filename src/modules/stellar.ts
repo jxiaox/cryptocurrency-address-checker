@@ -19,7 +19,7 @@ class XLMChecker implements IChecker, ICoin {
   /**
    * Checks if the given string is an address
    *
-   * @method validate
+   * @method isValid
    *
    * @param {String} address the given HEX address
    *
@@ -27,7 +27,7 @@ class XLMChecker implements IChecker, ICoin {
    *
    * @returns {Boolean}
    */
-  public validate(address: string): boolean {
+  public isValid(address: string): boolean {
     // check address regex or checksum address
     return coinsConfig.xlm.addressReg.some(reg => reg.test(address));
   }

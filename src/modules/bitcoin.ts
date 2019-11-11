@@ -19,7 +19,7 @@ class BitcoinChecker implements IChecker, ICoin {
     this.symbol = coinsConfig.btc.symbol;
   }
 
-  public validate(address: string): boolean {
+  public isValid(address: string): boolean {
     if (this.preCheck(address)) {
       // segwit address
       if (this.isSegWitAddress(address)) {

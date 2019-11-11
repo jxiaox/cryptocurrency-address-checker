@@ -92,26 +92,26 @@ describe('validate()', () => {
   const mainnetChecker = new BitcoinCashChecker();
 
   it('should validated when use correct btc address', () => {
-    expect(mainnetChecker.validate('1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs')).toBe(
+    expect(mainnetChecker.isValid('1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs')).toBe(
       true
     );
-    expect(mainnetChecker.validate('3NJZLcZEEYBpxYEUGewU4knsQRn1WM5Fkt')).toBe(
+    expect(mainnetChecker.isValid('3NJZLcZEEYBpxYEUGewU4knsQRn1WM5Fkt')).toBe(
       true
     );
   });
 
   it('should failed when use wrong btc address', () => {
     expect(
-      mainnetChecker.validate('tc1qw508d6qejxtdg4y5r3zarvary0c5xw7kg3g4ty')
+      mainnetChecker.isValid('tc1qw508d6qejxtdg4y5r3zarvary0c5xw7kg3g4ty')
     ).toBe(false);
-    expect(mainnetChecker.validate('bc1rw5uspcuh')).toBe(false);
+    expect(mainnetChecker.isValid('bc1rw5uspcuh')).toBe(false);
     expect(
-      mainnetChecker.validate(
+      mainnetChecker.isValid(
         'bc10w508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kw5rljs90'
       )
     ).toBe(false);
     expect(
-      mainnetChecker.validate('BC1QR508D6QEJXTDG4Y5R3ZARVARYV98GJ9P')
+      mainnetChecker.isValid('BC1QR508D6QEJXTDG4Y5R3ZARVARYV98GJ9P')
     ).toBe(false);
   });
   // it('should validated when use correct bch address', () => {});

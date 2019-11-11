@@ -19,10 +19,10 @@ class BitcoinCashChecker extends BitcoinChecker {
     this.bitcoinChecker = new BitcoinChecker(networkType);
   }
 
-  public validate(address: string): boolean {
+  public isValid(address: string): boolean {
     if (this.preCheck(address)) {
       if (this.bitcoinChecker.preCheck(address)) {
-        return this.bitcoinChecker.validate(address);
+        return this.bitcoinChecker.isValid(address);
       }
       const addressType = this.getAddressType(address);
       if (addressType) {

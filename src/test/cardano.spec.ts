@@ -46,33 +46,33 @@ describe('validate()', () => {
   const mainnetChecker = new ADAChecker();
   it('should validated when use correct ada address', () => {
     expect(
-      mainnetChecker.validate(
+      mainnetChecker.isValid(
         'DdzFFzCqrht1YAwbu3W9EDzAZfKySdgBqmwEE4GfG3X7jDZ5cxnGrQetyrv7txRmkVfQfTRAsny6dkpZTVfD82M39fn5ZbouHyh1RR2x'
       )
     ).toBe(true);
     expect(
-      mainnetChecker.validate(
+      mainnetChecker.isValid(
         'DdzFFzCqrht2WKNEFqHvMSumSQpcnMxcYLNNBXPYXyHpRk9M7PqVjZ5ysYzutnruNubzXak2NxT8UWTFQNzc77uzjQ1GtehBRBdAv7xb'
       )
     ).toBe(true);
     expect(
-      mainnetChecker.validate(
+      mainnetChecker.isValid(
         '4swhHtxKapQbj3TZEipgtp7NQzcRWDYqCxXYoPQWjGyHmhxS1w1TjUEszCQT1sQucGwmPQMYdv1FYs3d51KgoubviPBf'
       )
     ).toBe(true);
     expect(
-      mainnetChecker.validate(
+      mainnetChecker.isValid(
         'Ae2tdPwUPEZKmwoy3AU3cXb5Chnasj6mvVNxV1H11997q3VW5ihbSfQwGpm'
       )
     ).toBe(true);
   });
 
   it('should failed when use wrong ada address', () => {
-    expect(mainnetChecker.validate('')).toBe(false);
-    expect(mainnetChecker.validate('D123')).toBe(false);
-    expect(mainnetChecker.validate('Abcdefg')).toBe(false);
-    expect(mainnetChecker.validate('41234')).toBe(false);
+    expect(mainnetChecker.isValid('')).toBe(false);
+    expect(mainnetChecker.isValid('D123')).toBe(false);
+    expect(mainnetChecker.isValid('Abcdefg')).toBe(false);
+    expect(mainnetChecker.isValid('41234')).toBe(false);
     // invalid base58 string
-    expect(mainnetChecker.validate('%%@')).toBe(false);
+    expect(mainnetChecker.isValid('%%@')).toBe(false);
   });
 });

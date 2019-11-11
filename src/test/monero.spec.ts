@@ -57,13 +57,13 @@ describe('validate()', () => {
   const mainnetChecker = new XMRChecker();
   it('should validated when use correct xmr address', () => {
     fixtures.forEach(test => {
-      expect(mainnetChecker.validate(test)).toEqual(true);
+      expect(mainnetChecker.isValid(test)).toEqual(true);
     });
   });
 
   it('should failed when use wrong xmr address', () => {
     fixturesNot.forEach(test => {
-      expect(mainnetChecker.validate(test)).toEqual(false);
+      expect(mainnetChecker.isValid(test)).toEqual(false);
     });
   });
 });

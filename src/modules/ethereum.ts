@@ -20,7 +20,7 @@ class EthChecker implements IChecker, ICoin {
   /**
    * Checks if the given string is an address
    *
-   * @method validate
+   * @method isValid
    *
    * @param {String} address the given HEX address
    *
@@ -28,7 +28,7 @@ class EthChecker implements IChecker, ICoin {
    *
    * @returns {Boolean}
    */
-  public validate(address: string, chainId?: number): boolean {
+  public isValid(address: string, chainId?: number): boolean {
     // check address regex or checksum address
     return Utils.isAddress(address, chainId);
   }

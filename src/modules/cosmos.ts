@@ -20,13 +20,13 @@ class ATOMChecker implements IChecker, ICoin {
   /**
    * Checks if the given string is an address
    *
-   * @method validate
+   * @method isValid
    *
    * @param {String} address the given HEX address
    *
    * @returns {Boolean}
    */
-  public validate(address: string): boolean {
+  public isValid(address: string): boolean {
     if (this.preCheck(address)) {
       return this.verifyChecksum(address);
     }
