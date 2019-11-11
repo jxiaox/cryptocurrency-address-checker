@@ -2,7 +2,7 @@ import IChecker from '@/interfaces/checker.interface';
 import ICoin from '@/interfaces/coin.interface';
 import { coinsConfig } from '@/utils/configs';
 import { Network_type } from '@/utils/constants';
-import mem from 'nem-sdk';
+import nem from 'nem-sdk';
 
 class NemChecker implements IChecker, ICoin {
   public name: string;
@@ -52,7 +52,7 @@ class NemChecker implements IChecker, ICoin {
    */
   protected verifyChecksum(address: string): boolean {
     try {
-      return mem.model.address.isValid(address);
+      return nem.model.address.isValid(address);
     } catch (error) {
       return false;
     }
