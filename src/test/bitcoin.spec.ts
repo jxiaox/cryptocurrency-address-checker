@@ -73,9 +73,9 @@ describe('validate()', () => {
     );
 
     // segwit address
-    expect(
-      mainnetChecker.isValid('BC1QR508D6QEJXTDG4Y5R3ZARVARYV98GJ9P')
-    ).toBe(false);
+    expect(mainnetChecker.isValid('BC1QR508D6QEJXTDG4Y5R3ZARVARYV98GJ9P')).toBe(
+      false
+    );
     expect(
       mainnetChecker.isValid('bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t5')
     ).toBe(false);

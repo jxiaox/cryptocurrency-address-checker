@@ -110,9 +110,9 @@ describe('validate()', () => {
         'bc10w508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kw5rljs90'
       )
     ).toBe(false);
-    expect(
-      mainnetChecker.isValid('BC1QR508D6QEJXTDG4Y5R3ZARVARYV98GJ9P')
-    ).toBe(false);
+    expect(mainnetChecker.isValid('BC1QR508D6QEJXTDG4Y5R3ZARVARYV98GJ9P')).toBe(
+      false
+    );
   });
   // it('should validated when use correct bch address', () => {});
   // it('should validated when use correct bch address', () => {});
