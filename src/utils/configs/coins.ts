@@ -130,6 +130,12 @@ const config = {
     symbol: 'NANO',
     algorithm: 'Directed Acyclic Graph (DAG)',
     addressReg: [/^(nano|xrb)_[13]\w{51}\w{8}$/]
+  },
+  btm: {
+    fullName: 'Bytom',
+    symbol: 'BTM',
+    algorithm: 'Tensority',
+    addressReg: [/^bm1q\w{38}$/]
   }
 };
 
