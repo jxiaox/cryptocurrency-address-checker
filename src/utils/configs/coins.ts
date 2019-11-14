@@ -1,5 +1,11 @@
 /* tslint:disable:object-literal-sort-keys */
-const config = {
+import { ICoinConfigType } from '@/interfaces';
+import BitcoinCashChecker from '@/modules/bitcoincash';
+import DogeChecker from '@/modules/doge';
+import XLMChecker from '@/modules/stellar';
+import VSYSChecker from '@/modules/vsys';
+
+const coinsConfig: ICoinConfigType = {
   btc: {
     fullName: 'Bitcoin',
     symbol: 'BTC',
@@ -17,7 +23,8 @@ const config = {
     addressReg: [
       /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/,
       /^((bitcoincash:)?(q|p)[a-z0-9]{41})/
-    ]
+    ],
+    checker: BitcoinCashChecker
   },
   eth: {
     fullName: 'Ethereum',
@@ -44,7 +51,8 @@ const config = {
     fullName: 'Stellar Lumens',
     symbol: 'XLM',
     algorithm: 'Federated Byzantine Agreement (FBA)',
-    addressReg: [/^(g|G)\w{55}$/]
+    addressReg: [/^(g|G)\w{55}$/],
+    checker: XLMChecker
   },
   ada: {
     fullName: 'Cardano',
@@ -93,7 +101,8 @@ const config = {
     fullName: 'Dogecoin',
     symbol: 'DOGE',
     algorithm: 'Scrypt',
-    addressReg: [/^D{1}[5-9A-HJ-NP-U]{1}[1-9A-HJ-NP-Za-km-z]{32}$/]
+    addressReg: [/^D{1}[5-9A-HJ-NP-U]{1}[1-9A-HJ-NP-Za-km-z]{32}$/],
+    checker: DogeChecker
   },
   zec: {
     fullName: 'Zcash',
@@ -111,7 +120,8 @@ const config = {
     fullName: 'V Systems',
     symbol: 'VSYS',
     algorithm: 'SPoS',
-    addressReg: [/^A\w{34}$/]
+    addressReg: [/^A\w{34}$/],
+    checker: VSYSChecker
   },
   dcr: {
     fullName: 'Decred',
@@ -139,4 +149,4 @@ const config = {
   }
 };
 
-export default config;
+export default coinsConfig;

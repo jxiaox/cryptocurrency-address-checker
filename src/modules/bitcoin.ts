@@ -27,7 +27,7 @@ class BitcoinChecker implements IChecker, ICoin {
       }
       const addressType = this.getAddressType(address);
       if (addressType) {
-        return coinsConfig.btc.addressTypes.includes(addressType);
+        return coinsConfig.btc.addressTypes!.includes(addressType);
       }
     }
 
@@ -49,7 +49,7 @@ class BitcoinChecker implements IChecker, ICoin {
    * @memberof BitcoinChecker
    */
   public isSegWitAddress(address: string): boolean {
-    return coinsConfig.btc.segWitAddressReg.test(address);
+    return coinsConfig.btc.segWitAddressReg!.test(address);
   }
 
   /**

@@ -29,7 +29,7 @@ class DashChecker extends BitcoinChecker {
     if (this.preCheck(address)) {
       const addressType = this.getAddressType(address);
       if (addressType) {
-        return coinsConfig.dash.addressTypes.includes(addressType);
+        return coinsConfig.dash.addressTypes!.includes(addressType);
       }
     }
 

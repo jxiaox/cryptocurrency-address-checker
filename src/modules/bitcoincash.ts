@@ -3,7 +3,12 @@ import { Network_type } from '@/utils/constants';
 import { decode, IAddressInfo } from 'cashaddrjs';
 import BitcoinChecker from './bitcoin';
 
-class BitcoinCashChecker extends BitcoinChecker {
+class BitcoinCashChecker {
+  public name: string;
+  public symbol: string;
+  public hashAlgorithm: string;
+  public networkType: Network_type;
+
   protected bitcoinChecker: BitcoinChecker;
   protected prefix: string = '';
   protected type: string = '';
@@ -11,7 +16,7 @@ class BitcoinCashChecker extends BitcoinChecker {
   // tslint:disable-next-line:no-object-literal-type-assertion
   protected info: IAddressInfo = {} as IAddressInfo;
   constructor(networkType: Network_type = Network_type.Mainnet) {
-    super(networkType);
+    // super(networkType);
     this.networkType = networkType;
     this.hashAlgorithm = coinsConfig.btc.algorithm;
     this.name = coinsConfig.btc.fullName;
@@ -26,7 +31,7 @@ class BitcoinCashChecker extends BitcoinChecker {
       }
       const addressType = this.getAddressType(address);
       if (addressType) {
-        return coinsConfig.bch.addressTypes.includes(addressType);
+        return coinsConfig.bch.addressTypes!.includes(addressType);
       }
     }
 
@@ -60,7 +65,7 @@ class BitcoinCashChecker extends BitcoinChecker {
    * @protected
    * @param {string} address
    * @returns {(string | null)}
-   * @memberof BitcoinChecker
+   * @memberof BitcoinCashChecker
    */
   protected getAddressType(address: string): string | null {
     try {
