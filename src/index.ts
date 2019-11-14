@@ -1,6 +1,13 @@
 import { getCoinConfig } from '@/utils/configs';
 import IChecker from './interfaces/checker.interface';
 
+/**
+ * 验证地址是否合法
+ *
+ * @param {string} address
+ * @param {string} coin
+ * @returns {Promise<boolean>}
+ */
 async function isValid(address: string, coin: string): Promise<boolean> {
   const config = await getCoinConfig(coin);
   if (config) {
