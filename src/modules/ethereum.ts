@@ -1,6 +1,6 @@
-import CoinChecker from '@/interfaces/coinChecker';
-import { Network_type } from '@/utils/constants';
 import * as Utils from 'web3-utils';
+import CoinChecker from '../interfaces/coinChecker';
+import { Network_type } from '../utils/constants';
 
 class EthChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {

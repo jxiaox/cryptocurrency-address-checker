@@ -1,5 +1,5 @@
 /* tslint:disable:object-literal-sort-keys */
-import { ICoinConfigType } from '@/interfaces';
+import { ICoinConfigType } from '../../interfaces';
 
 const coinsConfig: ICoinConfigType = {
   btc: {

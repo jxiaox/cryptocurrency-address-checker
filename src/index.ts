@@ -1,5 +1,5 @@
-import { getCoinConfig } from '@/utils/configs';
 import IChecker from './interfaces/checker.interface';
+import { getCoinConfig } from './utils/configs';
 
 /**
  * 验证地址是否合法

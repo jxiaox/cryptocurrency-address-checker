@@ -1,4 +1,4 @@
-import { Network_type } from '@/utils/constants';
+import { Network_type } from '../utils/constants';
 export default interface ICoin {
   name: string;
   symbol: string;

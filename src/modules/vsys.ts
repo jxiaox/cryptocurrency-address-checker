@@ -1,6 +1,6 @@
-import CoinChecker from '@/interfaces/coinChecker';
-import { blake2b, bs58, keccak256 } from '@/lib/hash';
-import { Network_type } from '@/utils/constants';
+import CoinChecker from '../interfaces/coinChecker';
+import { blake2b, bs58, keccak256 } from '../lib/hash';
+import { Network_type } from '../utils/constants';
 
 class VSYSChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {

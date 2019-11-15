@@ -1,6 +1,6 @@
-import CoinChecker from '@/interfaces/coinChecker';
-import { Network_type } from '@/utils/constants';
 import { decode, IAddressInfo } from 'cashaddrjs';
+import CoinChecker from '../interfaces/coinChecker';
+import { Network_type } from '../utils/constants';
 import BitcoinChecker from './bitcoin';
 
 class BitcoinCashChecker extends CoinChecker {

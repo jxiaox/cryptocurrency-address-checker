@@ -1,6 +1,6 @@
-import CoinChecker from '@/interfaces/coinChecker';
-import { Network_type } from '@/utils/constants';
 import isValid from 'nano-address-validator';
+import CoinChecker from '../interfaces/coinChecker';
+import { Network_type } from '../utils/constants';
 
 class NanoChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {

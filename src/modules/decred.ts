@@ -1,7 +1,7 @@
-import CoinChecker from '@/interfaces/coinChecker';
-import { blake256, bs58 } from '@/lib/hash';
-import { toHex } from '@/utils';
-import { Network_type } from '@/utils/constants';
+import CoinChecker from '../interfaces/coinChecker';
+import { blake256, bs58 } from '../lib/hash';
+import { toHex } from '../utils';
+import { Network_type } from '../utils/constants';
 
 class DCRChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {

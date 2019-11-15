@@ -1,6 +1,6 @@
-import CoinChecker from '@/interfaces/coinChecker';
-import { Network_type } from '@/utils/constants';
 import { isValidChecksum } from '@iota/checksum';
+import CoinChecker from '../interfaces/coinChecker';
+import { Network_type } from '../utils/constants';
 
 class IOTAChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {

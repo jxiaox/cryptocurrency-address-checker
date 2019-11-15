@@ -1,10 +1,10 @@
-import { toArrayBuffer } from '@/utils';
 import baseX from 'base-x';
 import Blake2b from 'blake2b';
 import bs58 from 'bs58';
 import { keccak256 } from 'js-sha3';
 import jsSHA from 'jssha';
 import shaJs from 'sha.js';
+import { toArrayBuffer } from '../utils';
 // import * as base32 from './base32';
 import Blake256 from './blake256';
 type ShaDataFormat = 'HEX' | 'TEXT' | 'BUFFER';

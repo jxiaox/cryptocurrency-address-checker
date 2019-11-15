@@ -1,6 +1,6 @@
-import CoinChecker from '@/interfaces/coinChecker';
-import { Network_type } from '@/utils/constants';
 import bech32 from 'bech32';
+import CoinChecker from '../interfaces/coinChecker';
+import { Network_type } from '../utils/constants';
 
 class BtmChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {

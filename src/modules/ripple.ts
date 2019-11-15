@@ -1,8 +1,8 @@
-import CoinChecker from '@/interfaces/coinChecker';
-import { sha256 } from '@/lib/hash';
-import { toHex } from '@/utils';
-import { Network_type } from '@/utils/constants';
 import baseX from 'base-x';
+import CoinChecker from '../interfaces/coinChecker';
+import { sha256 } from '../lib/hash';
+import { toHex } from '../utils';
+import { Network_type } from '../utils/constants';
 
 const ALLOWED_CHARS =
   'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz';

@@ -1,4 +1,4 @@
-import { ICoinConfig } from '@/interfaces';
+import { ICoinConfig } from '../../interfaces';
 import coinsConfig from './coins';
 
 /**

@@ -1,6 +1,6 @@
-import CoinChecker from '@/interfaces/coinChecker';
-import { Network_type } from '@/utils/constants';
 import nem from 'nem-sdk';
+import CoinChecker from '../interfaces/coinChecker';
+import { Network_type } from '../utils/constants';
 
 class NemChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {

@@ -1,9 +1,9 @@
-import CoinChecker from '@/interfaces/coinChecker';
-import { bs58, sha256 } from '@/lib/hash';
-import { toHex } from '@/utils';
-import { coinsConfig } from '@/utils/configs';
-import { Network_type } from '@/utils/constants';
 import bech32 from 'bech32';
+import CoinChecker from '../interfaces/coinChecker';
+import { bs58, sha256 } from '../lib/hash';
+import { toHex } from '../utils';
+import { coinsConfig } from '../utils/configs';
+import { Network_type } from '../utils/constants';
 
 class BitcoinChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {

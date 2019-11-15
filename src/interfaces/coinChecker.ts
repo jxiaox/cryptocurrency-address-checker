@@ -1,5 +1,5 @@
-import { coinsConfig } from '@/utils/configs';
-import { Network_type } from '@/utils/constants';
+import { coinsConfig } from '../utils/configs';
+import { Network_type } from '../utils/constants';
 import IChecker from './checker.interface';
 import ICoin from './coin.interface';
 import { ICoinConfig } from './coinConfig.interface';

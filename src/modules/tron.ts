@@ -1,7 +1,7 @@
-import CoinChecker from '@/interfaces/coinChecker';
-import { bs58, sha256 } from '@/lib/hash';
-import { toHex } from '@/utils';
-import { Network_type } from '@/utils/constants';
+import CoinChecker from '../interfaces/coinChecker';
+import { bs58, sha256 } from '../lib/hash';
+import { toHex } from '../utils';
+import { Network_type } from '../utils/constants';
 
 class TRXChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {

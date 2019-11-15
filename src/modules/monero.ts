@@ -1,5 +1,3 @@
-import CoinChecker from '@/interfaces/coinChecker';
-import { Network_type } from '@/utils/constants';
 import { cnBase58 } from '@xmr-core/xmr-b58';
 import {
   ADDRESS_CHECKSUM_SIZE,
@@ -8,6 +6,8 @@ import {
 import { cn_fast_hash } from '@xmr-core/xmr-fast-hash';
 // tslint:disable-next-line:no-implicit-dependencies
 import { encode_varint } from '@xmr-core/xmr-varint';
+import CoinChecker from '../interfaces/coinChecker';
+import { Network_type } from '../utils/constants';
 
 const __MAINNET_CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 18;
 const __MAINNET_CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 19;

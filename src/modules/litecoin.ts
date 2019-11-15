@@ -1,5 +1,5 @@
-import { coinsConfig } from '@/utils/configs';
-import { Network_type } from '@/utils/constants';
+import { coinsConfig } from '../utils/configs';
+import { Network_type } from '../utils/constants';
 import BitcoinChecker from './bitcoin';
 
 class LitecoinChecker extends BitcoinChecker {

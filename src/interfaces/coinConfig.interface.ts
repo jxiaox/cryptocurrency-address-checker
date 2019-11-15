@@ -1,5 +1,3 @@
-// import IChecker from './checker.interface';
-
 export interface ICoinConfig {
   fullName: string;
   symbol: string;

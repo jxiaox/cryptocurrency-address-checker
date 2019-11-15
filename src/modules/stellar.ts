@@ -1,8 +1,8 @@
-import CoinChecker from '@/interfaces/coinChecker';
-import { base32 } from '@/lib/hash';
-import { numberToHex, swap16, toHex } from '@/utils';
-import { Network_type } from '@/utils/constants';
 import crc from 'crc';
+import CoinChecker from '../interfaces/coinChecker';
+import { base32 } from '../lib/hash';
+import { numberToHex, swap16, toHex } from '../utils';
+import { Network_type } from '../utils/constants';
 
 // tslint:disable-next-line:no-bitwise
 const ed25519PublicKeyVersionByte = 6 << 3;
