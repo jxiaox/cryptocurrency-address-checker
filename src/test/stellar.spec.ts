@@ -36,7 +36,7 @@ describe('validate()', () => {
     ).toBe(false);
     expect(
       mainnetChecker.isValid(
-        'GBQY3VQXI3TCFOFQYRGQDY4MNMHAHXIAVQ2PEGPKOWTNICFIHNN5QSF1'
+        'GBQY3VQXI3TCFOFQYRGQDY4MNMHAHXIAVQ2PEGPKOWTNICFIHNN5QSF2'
       )
     ).toBe(false);
   });

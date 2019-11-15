@@ -51,7 +51,7 @@ const coinsConfig: ICoinConfigType = {
     fullName: 'Stellar Lumens',
     symbol: 'XLM',
     algorithm: 'Federated Byzantine Agreement (FBA)',
-    addressReg: [/^(g|G)\w{55}$/],
+    addressReg: [/^(G)[ABCDEFGHIJKLMNOPQRSTUVWXYZ234567]{55}$/],
     checker: XLMChecker
   },
   ada: {
