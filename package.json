@@ -1,11 +1,19 @@
 {
   "name": "cryptocurrency-address-checker",
-  "version": "1.0.0",
-  "description": "cryptocurrency-address-checker",
+  "version": "0.1.0",
+  "description": "A Typescript library validation Bitcoin and other Altcoins address.",
+  "author": "jxiaox",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/jxiaox/cryptocurrency-address-checker",
+  "homepage": "https://github.com/jxiaox/cryptocurrency-address-checker#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jxiaox/cryptocurrency-address-checker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jxiaox/cryptocurrency-address-checker/issues"
+  },
   "license": "MIT",
   "keywords": [],
   "scripts": {
