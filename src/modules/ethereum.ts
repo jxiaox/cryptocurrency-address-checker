@@ -63,6 +63,11 @@ class EthChecker implements IChecker, ICoin {
   public toChecksumAddress(address: string, chainId?: number): string {
     return Utils.toChecksumAddress(address, chainId);
   }
+
+  public preCheck(address: string): boolean {
+    // check address regex or checksum address
+    return Utils.isAddress(address);
+  }
 }
 
 export default EthChecker;

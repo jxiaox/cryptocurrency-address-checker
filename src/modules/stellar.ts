@@ -28,6 +28,10 @@ class XLMChecker implements IChecker, ICoin {
    * @returns {Boolean}
    */
   public isValid(address: string): boolean {
+    return this.preCheck(address);
+  }
+
+  public preCheck(address: string): boolean {
     // check address regex or checksum address
     return coinsConfig.xlm.addressReg.some(reg => reg.test(address));
   }
