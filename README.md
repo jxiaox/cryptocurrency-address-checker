@@ -9,14 +9,14 @@
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
   <a href="https://github.com/jxiaox/cryptocurrency-address-checker/blob/master/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/license/jxiaox/cryptocurrency-address-checker" />
+    <img alt="License: MIT" src="https://img.shields.io/apm/l/cryptocurrency-address-checker" />
   </a>
-  <a href="https://twitter.com/https://twitter.com/jxiaox" target="_blank">
-    <img alt="Twitter: https://twitter.com/jxiaox" src="https://img.shields.io/twitter/follow/https://twitter.com/jxiaox.svg?style=social" />
+  <a href="https://twitter.com/jxiaox" target="_blank">
+    <img alt="Twitter: https://twitter.com/jxiaox" src="https://img.shields.io/twitter/follow/jxiaox?label=Follow&style=social" />
   </a>
 </p>
 
-> A Typescript library validation Bitcoin and other Altcoins address.
+> A typescript library for validation bitcoin and most of altcoins address.
 
 ### 🏠 [Homepage](https://github.com/jxiaox/cryptocurrency-address-checker#readme)
 
@@ -41,6 +41,30 @@ yarn doc
 ```sh
 yarn test
 ```
+
+## Supported crypto currencies
+
+- Bitcoin/BTC
+- Bitcoin Cash/BCH
+- Ethereum/ETH
+- Litecoin/LTC
+- Ripple/XRP
+- Stellar Lumens/XLM
+- Cardano/ADA
+- Tron/TRX
+- Monero/XMR
+- IOTA
+- Dash/DASH
+- Cosmos/ATOM
+- NEO
+- Dogecoin/DOGE
+- Zcash/ZEC
+- NEM/XEM
+- V Systems/VSYS
+- Decred/DCR
+- Qtum/QTUM
+- Nano/NANO
+- Bytom/BTM
 
 ## Author
 
