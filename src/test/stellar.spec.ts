@@ -20,11 +20,6 @@ describe('validate()', () => {
         'GBQY3VQXI3TCFOFQYRGQDY4MNMHAHXIAVQ2PEGPKOWTNICFIHNN5QSFD'
       )
     ).toBe(true);
-    expect(
-      mainnetChecker.isValid(
-        'gbh4tzyz4ircpo44cbolfuhulu2wgalxtavesqa6432mbjmabbb4giyi'
-      )
-    ).toBe(true);
   });
 
   it('should failed when use wrong xlm address', () => {
@@ -33,6 +28,16 @@ describe('validate()', () => {
     expect(mainnetChecker.isValid('ggggg')).toBe(false);
     expect(
       mainnetChecker.isValid('0xc6d9d2cd449a754c494264e1809c50e34d64562b')
+    ).toBe(false);
+    expect(
+      mainnetChecker.isValid(
+        'gbh4tzyz4ircpo44cbolfuhulu2wgalxtavesqa6432mbjmabbb4giyi'
+      )
+    ).toBe(false);
+    expect(
+      mainnetChecker.isValid(
+        'GBQY3VQXI3TCFOFQYRGQDY4MNMHAHXIAVQ2PEGPKOWTNICFIHNN5QSF1'
+      )
     ).toBe(false);
   });
 });

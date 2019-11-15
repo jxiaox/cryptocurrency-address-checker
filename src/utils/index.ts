@@ -78,4 +78,31 @@ function prefixToUint5Array(prefix: string): Uint8Array {
   return result;
 }
 
-export { toHex, concat, prefixToUint5Array };
+/**
+ * swap16
+ *
+ * @param {number} num
+ * @returns {number}
+ */
+function swap16(num: number): number {
+  // tslint:disable: no-bitwise
+  const lower = num & 0xff;
+  const upper = (num >> 8) & 0xff;
+  return (lower << 8) | upper;
+}
+
+/**
+ * number to hex
+ *
+ * @param {number} num
+ * @returns {string}
+ */
+function numberToHex(num: number): string {
+  let hex = num.toString(16);
+  if (hex.length % 2 === 1) {
+    hex = '0' + hex;
+  }
+  return hex;
+}
+
+export { toHex, concat, prefixToUint5Array, swap16, numberToHex };
