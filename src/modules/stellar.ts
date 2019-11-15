@@ -1,49 +1,15 @@
-import IChecker from '@/interfaces/checker.interface';
-import ICoin from '@/interfaces/coin.interface';
+import CoinChecker from '@/interfaces/coinChecker';
 import { base32 } from '@/lib/hash';
 import { numberToHex, swap16, toHex } from '@/utils';
-import { coinsConfig } from '@/utils/configs';
 import { Network_type } from '@/utils/constants';
 import crc from 'crc';
 
 // tslint:disable-next-line:no-bitwise
 const ed25519PublicKeyVersionByte = 6 << 3;
 
-class XLMChecker implements IChecker, ICoin {
-  public name: string;
-  public symbol: string;
-  public hashAlgorithm: string;
-  public networkType: Network_type;
-
+class XLMChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {
-    this.networkType = networkType;
-    this.hashAlgorithm = coinsConfig.xlm.algorithm;
-    this.name = coinsConfig.xlm.fullName;
-    this.symbol = coinsConfig.xlm.symbol;
-  }
-
-  /**
-   * Checks if the given string is an address
-   *
-   * @method isValid
-   *
-   * @param {String} address the given HEX address
-   *
-   * @param {Number} chainId to define checksum behavior
-   *
-   * @returns {Boolean}
-   */
-  public isValid(address: string): boolean {
-    if (this.preCheck(address)) {
-      return this.verifyChecksum(address);
-    }
-
-    return false;
-  }
-
-  public preCheck(address: string): boolean {
-    // check address regex or checksum address
-    return coinsConfig.xlm.addressReg.some(reg => reg.test(address));
+    super('xlm', networkType);
   }
 
   /**

@@ -1,20 +1,10 @@
-import IChecker from '@/interfaces/checker.interface';
-import ICoin from '@/interfaces/coin.interface';
-import { coinsConfig } from '@/utils/configs';
+import CoinChecker from '@/interfaces/coinChecker';
 import { Network_type } from '@/utils/constants';
 import * as Utils from 'web3-utils';
 
-class EthChecker implements IChecker, ICoin {
-  public name: string;
-  public symbol: string;
-  public hashAlgorithm: string;
-  public networkType: Network_type;
-
+class EthChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {
-    this.networkType = networkType;
-    this.hashAlgorithm = coinsConfig.eth.algorithm;
-    this.name = coinsConfig.eth.fullName;
-    this.symbol = coinsConfig.eth.symbol;
+    super('eth', networkType);
   }
 
   /**

@@ -18,16 +18,19 @@ async function getCoinConfig(
   }
   // name
   const namedConfig = Object.values(coinsConfig).find(coinConfig => {
-    return coinConfig.fullName.toLocaleLowerCase() === lowerName;
+    return coinConfig.fullName.toLowerCase() === lowerName;
   });
   if (namedConfig) {
     result = namedConfig;
   }
 
-  if (result && !result.checker) {
-    result.checker = (await import(
-      `../../modules/${result.fullName.toLocaleLowerCase()}`
-    )).default;
+  if (result) {
+    if (!result.checker || typeof result.checker === 'string') {
+      const moduleName = result.checker || result.fullName;
+      result.checker = (await import(
+        `../../modules/${moduleName.toLowerCase()}`
+      )).default;
+    }
   }
 
   return result;

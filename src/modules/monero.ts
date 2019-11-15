@@ -1,6 +1,4 @@
-import IChecker from '@/interfaces/checker.interface';
-import ICoin from '@/interfaces/coin.interface';
-import { coinsConfig } from '@/utils/configs';
+import CoinChecker from '@/interfaces/coinChecker';
 import { Network_type } from '@/utils/constants';
 import { cnBase58 } from '@xmr-core/xmr-b58';
 import {
@@ -15,43 +13,9 @@ const __MAINNET_CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 18;
 const __MAINNET_CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 19;
 const __MAINNET_CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 42;
 
-class XMRChecker implements IChecker, ICoin {
-  public name: string;
-  public symbol: string;
-  public hashAlgorithm: string;
-  public networkType: Network_type;
-
+class XMRChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {
-    this.networkType = networkType;
-    this.hashAlgorithm = coinsConfig.xmr.algorithm;
-    this.name = coinsConfig.xmr.fullName;
-    this.symbol = coinsConfig.xmr.symbol;
-  }
-
-  /**
-   * Checks if the given string is an address
-   *
-   * @method isValid
-   *
-   * @param {String} address the given HEX address
-   *
-   * @returns {Boolean}
-   */
-  public isValid(address: string): boolean {
-    // check address regex or checksum address
-    if (this.preCheck(address)) {
-      return this.verifyChecksum(address);
-    }
-
-    return false;
-  }
-
-  /**
-   * 通过正则预检查
-   * @param address 地址
-   */
-  public preCheck(address: string): boolean {
-    return coinsConfig.xmr.addressReg.some(reg => reg.test(address));
+    super('xmr', networkType);
   }
 
   /**

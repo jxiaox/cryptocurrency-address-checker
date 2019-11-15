@@ -1,22 +1,13 @@
-import IChecker from '@/interfaces/checker.interface';
-import ICoin from '@/interfaces/coin.interface';
+import CoinChecker from '@/interfaces/coinChecker';
 import { bs58, sha256 } from '@/lib/hash';
 import { toHex } from '@/utils';
 import { coinsConfig } from '@/utils/configs';
 import { Network_type } from '@/utils/constants';
 import bech32 from 'bech32';
 
-class BitcoinChecker implements IChecker, ICoin {
-  public name: string;
-  public symbol: string;
-  public hashAlgorithm: string;
-  public networkType: Network_type;
-
+class BitcoinChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {
-    this.networkType = networkType;
-    this.hashAlgorithm = coinsConfig.btc.algorithm;
-    this.name = coinsConfig.btc.fullName;
-    this.symbol = coinsConfig.btc.symbol;
+    super('btc', networkType);
   }
 
   public isValid(address: string): boolean {
@@ -64,7 +55,7 @@ class BitcoinChecker implements IChecker, ICoin {
     try {
       const decoded: Buffer = bs58.decode(address);
       if (this.isLegalAddress(address, decoded)) {
-        if (this.verifyChecksum(decoded)) {
+        if (this.verifyChecksum(address)) {
           return toHex(decoded.slice(0, 1));
         }
       }
@@ -82,7 +73,8 @@ class BitcoinChecker implements IChecker, ICoin {
    * @returns {boolean}
    * @memberof XrpChecker
    */
-  protected verifyChecksum(decoded: Buffer): boolean {
+  protected verifyChecksum(address: string): boolean {
+    const decoded: Buffer = bs58.decode(address);
     const decodedChecksum: string = toHex(decoded.slice(-4));
     const payloadHex: Buffer = decoded.slice(0, -4);
     const payloadChecksum: string = this.getChecksum(payloadHex);

@@ -1,46 +1,11 @@
-import IChecker from '@/interfaces/checker.interface';
-import ICoin from '@/interfaces/coin.interface';
+import CoinChecker from '@/interfaces/coinChecker';
 import { bs58, sha256 } from '@/lib/hash';
 import { toHex } from '@/utils';
-import { coinsConfig } from '@/utils/configs';
 import { Network_type } from '@/utils/constants';
 
-class QTUMChecker implements IChecker, ICoin {
-  public name: string;
-  public symbol: string;
-  public hashAlgorithm: string;
-  public networkType: Network_type;
-
+class QTUMChecker extends CoinChecker {
   constructor(networkType: Network_type = Network_type.Mainnet) {
-    this.networkType = networkType;
-    this.hashAlgorithm = coinsConfig.qtum.algorithm;
-    this.name = coinsConfig.qtum.fullName;
-    this.symbol = coinsConfig.qtum.symbol;
-  }
-
-  /**
-   * Checks if the given string is an address
-   *
-   * @method isValid
-   *
-   * @param {String} address the given HEX address
-   *
-   * @returns {Boolean}
-   */
-  public isValid(address: string): boolean {
-    if (this.preCheck(address)) {
-      return this.verifyChecksum(address);
-    }
-
-    return false;
-  }
-
-  /**
-   * 通过正则预检查
-   * @param address 地址
-   */
-  public preCheck(address: string): boolean {
-    return coinsConfig.qtum.addressReg.some(reg => reg.test(address));
+    super('qtum', networkType);
   }
 
   /**

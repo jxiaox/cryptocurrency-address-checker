@@ -69,6 +69,7 @@
     "bs58": "^4.0.1",
     "cashaddrjs": "^0.3.6",
     "crc": "^3.8.0",
+    "global": "^4.4.0",
     "js-sha256": "^0.9.0",
     "js-sha3": "^0.8.0",
     "jssha": "^2.3.1",
@@ -78,7 +79,7 @@
     "web3-utils": "^2.0.0-alpha.1"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.16",
+    "@types/jest": "^24.0.23",
     "babel-jest": "^24.8.0",
     "codecov": "^3.1.0",
     "cz-conventional-changelog": "^2.1.0",
@@ -92,7 +93,7 @@
     "prettier": "^1.15.2",
     "standard-version": "^4.4.0",
     "trash-cli": "^1.4.0",
-    "ts-jest": "^24.0.2",
+    "ts-jest": "^24.1.0",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.17.0",
     "tslint-immutable": "^5.0.0",

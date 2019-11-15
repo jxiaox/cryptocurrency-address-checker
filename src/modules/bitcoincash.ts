@@ -1,14 +1,9 @@
-import { coinsConfig } from '@/utils/configs';
+import CoinChecker from '@/interfaces/coinChecker';
 import { Network_type } from '@/utils/constants';
 import { decode, IAddressInfo } from 'cashaddrjs';
 import BitcoinChecker from './bitcoin';
 
-class BitcoinCashChecker {
-  public name: string;
-  public symbol: string;
-  public hashAlgorithm: string;
-  public networkType: Network_type;
-
+class BitcoinCashChecker extends CoinChecker {
   protected bitcoinChecker: BitcoinChecker;
   protected prefix: string = '';
   protected type: string = '';
@@ -16,11 +11,7 @@ class BitcoinCashChecker {
   // tslint:disable-next-line:no-object-literal-type-assertion
   protected info: IAddressInfo = {} as IAddressInfo;
   constructor(networkType: Network_type = Network_type.Mainnet) {
-    // super(networkType);
-    this.networkType = networkType;
-    this.hashAlgorithm = coinsConfig.btc.algorithm;
-    this.name = coinsConfig.btc.fullName;
-    this.symbol = coinsConfig.btc.symbol;
+    super('bch', networkType);
     this.bitcoinChecker = new BitcoinChecker(networkType);
   }
 
@@ -31,19 +22,11 @@ class BitcoinCashChecker {
       }
       const addressType = this.getAddressType(address);
       if (addressType) {
-        return coinsConfig.bch.addressTypes!.includes(addressType);
+        return this.coinConfig.addressTypes!.includes(addressType);
       }
     }
 
     return false;
-  }
-
-  /**
-   * 通过正则预检查
-   * @param address 地址
-   */
-  public preCheck(address: string): boolean {
-    return coinsConfig.bch.addressReg.some(reg => reg.test(address));
   }
 
   /**
