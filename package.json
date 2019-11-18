@@ -20,6 +20,7 @@
     "describe": "npm-scripts-info",
     "build": "run-s clean && run-p build:*",
     "build:main": "tsc -p tsconfig.json",
+    "build:min": "webpack --config webpack.config.js --env",
     "build:module": "tsc -p tsconfig.module.json",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
@@ -102,11 +103,14 @@
     "standard-version": "^4.4.0",
     "trash-cli": "^1.4.0",
     "ts-jest": "^24.1.0",
+    "ts-loader": "^6.2.1",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.17.0",
     "tslint-immutable": "^5.0.0",
     "typedoc": "^0.13.0",
-    "typescript": "^3.1.6"
+    "typescript": "^3.1.6",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   },
   "config": {
     "commitizen": {
