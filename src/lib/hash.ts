@@ -1,11 +1,9 @@
 import baseX from 'base-x';
 import Blake2b from 'blake2b';
 import bs58 from 'bs58';
+import CryptoJS from 'crypto-js';
 import { keccak256 } from 'js-sha3';
-import jsSHA from 'jssha';
 import shaJs from 'sha.js';
-import { toArrayBuffer } from '../utils';
-// import * as base32 from './base32';
 import Blake256 from './blake256';
 type ShaDataFormat = 'HEX' | 'TEXT' | 'BUFFER';
 
@@ -37,14 +35,15 @@ export function sha256(
   }
 }
 
-function sha3(message: string | Buffer, type: ShaDataFormat = 'HEX'): string {
-  const shaObj = new jsSHA('SHA3-256', 'TEXT');
-  if (type === 'BUFFER') {
-    shaObj.setHMACKey(toArrayBuffer(message as Buffer), 'ARRAYBUFFER');
-  } else {
-    shaObj.setHMACKey(message as string, 'TEXT');
-  }
-  return shaObj.getHMAC('HEX');
+function sha3(message: string): string {
+  const versionPrefixedRipemd160Hash = CryptoJS.enc.Hex.parse(
+    message.slice(0, 42)
+  );
+  const tempHash = CryptoJS.SHA3(versionPrefixedRipemd160Hash, {
+    outputLength: 256
+  });
+
+  return CryptoJS.enc.Hex.stringify(tempHash);
 }
 function blake2b(input: Buffer): Uint8Array {
   const output = new Uint8Array(32);

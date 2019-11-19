@@ -1,3 +1,21 @@
+const hexEncodeArray = [
+  '0',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  'a',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f'
+];
 /**
  * 转换为16进制
  *
@@ -105,4 +123,46 @@ function numberToHex(num: number): string {
   return hex;
 }
 
-export { toHex, concat, prefixToUint5Array, swap16, numberToHex };
+/**
+ * Convert hex to Uint8Array
+ *
+ * @param {string} hexx - An hex string
+ *
+ * @return {Uint8Array}
+ */
+function hex2ua(hexx: string): Uint8Array {
+  const hex = hexx.toString(); // force conversion
+  const ua = new Uint8Array(hex.length / 2);
+  for (let i = 0; i < hex.length; i += 2) {
+    ua[i / 2] = parseInt(hex.substr(i, 2), 16);
+  }
+  return ua;
+}
+
+/**
+ * Convert an Uint8Array to hex
+ *
+ * @param {Uint8Array} ua - An Uint8Array
+ *
+ * @return {string}
+ */
+function ua2hex(ua: Uint8Array): string {
+  let s = '';
+  // tslint:disable-next-line:prefer-for-of
+  for (let i = 0; i < ua.length; i++) {
+    const code = ua[i];
+    s += hexEncodeArray[code >>> 4];
+    s += hexEncodeArray[code & 0x0f];
+  }
+  return s;
+}
+
+export {
+  toHex,
+  concat,
+  prefixToUint5Array,
+  swap16,
+  numberToHex,
+  hex2ua,
+  ua2hex
+};

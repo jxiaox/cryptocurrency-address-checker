@@ -1,5 +1,6 @@
-import nem from 'nem-sdk';
 import CoinChecker from '../interfaces/coinChecker';
+import { base32, sha3 } from '../lib/hash';
+import { toHex } from '../utils';
 import { Network_type } from '../utils/constants';
 
 class NemChecker extends CoinChecker {
@@ -17,7 +18,18 @@ class NemChecker extends CoinChecker {
    */
   protected verifyChecksum(address: string): boolean {
     try {
-      return nem.model.address.isValid(address);
+      const tAddress = address
+        .toString()
+        .toUpperCase()
+        .replace(/-/g, '');
+      if (!tAddress || tAddress.length !== 40) {
+        return false;
+      }
+
+      const decoded = toHex(base32.decode(tAddress));
+      const stepThreeChecksum = sha3(decoded).substr(0, 8);
+
+      return stepThreeChecksum === decoded.slice(42);
     } catch (error) {
       return false;
     }
