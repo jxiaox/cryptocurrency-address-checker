@@ -16,6 +16,6 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'cryptocurrency-address-checker.js'
+    filename: 'cryptocurrency-address-checker.min.js'
   }
 };
