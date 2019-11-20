@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.14"></a>
+## [0.1.14](https://github.com/jxiaox/cryptocurrency-address-checker/compare/v0.1.12...v0.1.14) (2019-11-20)
+
+
+
 <a name="0.1.12"></a>
 ## [0.1.12](https://github.com/jxiaox/cryptocurrency-address-checker/compare/v0.1.10...v0.1.12) (2019-11-20)
 
