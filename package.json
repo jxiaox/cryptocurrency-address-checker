@@ -1,6 +1,6 @@
 {
   "name": "cryptocurrency-address-checker",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "description": "A Typescript library validation Bitcoin and other Altcoins address.",
   "author": "jxiaox",
   "main": "build/main/index.js",
