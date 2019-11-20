@@ -1,15 +1,15 @@
 import IChecker from './interfaces/checker.interface';
-import { getCoinConfig } from './utils/configs';
+import { getCoinConfig } from './modules';
 
 /**
  * 验证地址是否合法
  *
  * @param {string} address
  * @param {string} coin
- * @returns {Promise<boolean>}
+ * @returns {boolean}
  */
-async function isValid(address: string, coin: string): Promise<boolean> {
-  const checker = await getConfigChecker(coin);
+function isValid(address: string, coin: string): boolean {
+  const checker = getConfigChecker(coin);
   if (checker) {
     return checker.isValid(address) as boolean;
   }
@@ -21,23 +21,31 @@ async function isValid(address: string, coin: string): Promise<boolean> {
  *
  * @param {string} address
  * @param {string} coin
- * @returns {Promise<boolean>}
+ * @returns {boolean}
  */
-async function preCheck(address: string, coin: string): Promise<boolean> {
-  const checker = await getConfigChecker(coin);
+function preCheck(address: string, coin: string): boolean {
+  const checker = getConfigChecker(coin);
   if (checker) {
     return checker.preCheck(address) as boolean;
   }
   return false;
 }
 
-async function getConfigChecker(coin: string): Promise<IChecker | null> {
-  const config = await getCoinConfig(coin);
+/**
+ * 获取配置
+ *
+ * @param {string} coin
+ * @returns {(IChecker)}
+ */
+function getConfigChecker(coin: string): IChecker {
+  const config = getCoinConfig(coin);
   if (config) {
     const checker: IChecker = new config.checker();
     return checker;
   }
-  return null;
+  throw new Error(
+    `No ${coin} config or checker, please make sure you enter the correct coin name.`
+  );
 }
 
-export { isValid, preCheck };
+export { getConfigChecker as cryptoChecker, isValid, preCheck };
