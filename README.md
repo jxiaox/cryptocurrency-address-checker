@@ -66,6 +66,48 @@ yarn test
 - Nano/NANO
 - Bytom/BTM
 
+### Usage example
+
+#### Typescript
+
+```typescript
+import { isValid } from 'cryptocurrency-address-checker';
+
+const valid: boolean = isValid('1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck', 'BTC');
+if (valid) {
+  console.log('This is a valid address');
+} else {
+  console.log('Address INVALID');
+}
+```
+
+#### Javascript
+
+```javascript
+import { isValid, preCheck } from 'cryptocurrency-address-checker';
+
+var valid = isValid('1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck', 'BTC');
+if (valid) console.log('This is a valid BTC address');
+else console.log('BTC Address INVALID');
+
+var valid = preCheck('Xx4dYKgz3Zcv6kheaqog3fynaKWjbahb6b', 'dash');
+if (valid) console.log('This is a valid DASH address');
+else console.log('DASH Address INVALID');
+```
+
+#### Browser
+
+```html
+<script src="cryptocurrency-address-checker.min.js"></script>
+```
+
+```javascript
+// CAChecker is exposed as a global (window.CAChecker)
+var valid = CAChecker.validate('1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck', 'bitcoin');
+if (valid) console.log('This is a valid address');
+else console.log('Address INVALID');
+```
+
 ## Author
 
 👤 **jxiaox**
