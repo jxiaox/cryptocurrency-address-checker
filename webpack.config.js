@@ -15,6 +15,8 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js']
   },
   output: {
+    library: 'CAChecker',
+    libraryTarget: 'umd',
     path: path.resolve(__dirname, 'build'),
     filename: 'cryptocurrency-address-checker.min.js'
   }
