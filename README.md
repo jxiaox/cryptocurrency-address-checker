@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to cryptocurrency-address-checker 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/github/package-json/v/jxiaox/cryptocurrency-address-checker" />
   <img src="https://img.shields.io/badge/node-%3E%3D8.9-blue.svg" />
   <a href="https://github.com/jxiaox/cryptocurrency-address-checker#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -9,11 +9,13 @@
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
   <a href="https://github.com/jxiaox/cryptocurrency-address-checker/blob/master/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/apm/l/cryptocurrency-address-checker" />
+    <img alt="License: MIT" src="https://img.shields.io/github/license/jxiaox/cryptocurrency-address-checker" />
   </a>
-  <a href="https://twitter.com/jxiaox" target="_blank">
-    <img alt="Twitter: https://twitter.com/jxiaox" src="https://img.shields.io/twitter/follow/jxiaox?label=Follow&style=social" />
+  <a href="https://circleci.com/gh/jxiaox/cryptocurrency-address-checker
+" target="_blank">
+    <img alt="circleci" src="https://img.shields.io/circleci/build/github/jxiaox/cryptocurrency-address-checker" />
   </a>
+
 </p>
 
 > A typescript library for validation bitcoin and most of altcoins address.
@@ -66,7 +68,42 @@ yarn test
 - Nano/NANO
 - Bytom/BTM
 
-### Usage example
+### API
+
+```typescript
+/**
+ * Checks if the given string is an address
+ *
+ * @param {string} address
+ * @param {string} coin
+ * @returns {boolean}
+ */
+function isValid(address: string, coin: string): boolean;
+
+/**
+ * Use regex to pre-check the address is a legal address type.
+ *
+ * @param {string} address
+ * @param {string} coin
+ * @returns {boolean}
+ */
+function preCheck(address: string, coin: string): boolean;
+
+/**
+ * Get the checker
+ *
+ * @param {string} coin
+ * @returns {IChecker}
+ */
+function cryptoChecker(coin: string): IChecker;
+
+interface IChecker {
+  isValid(address: string): boolean;
+  preCheck(address: string): boolean;
+}
+```
+
+### Examples
 
 #### Typescript
 
@@ -107,14 +144,6 @@ var valid = CAChecker.validate('1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck', 'bitcoin');
 if (valid) console.log('This is a valid address');
 else console.log('Address INVALID');
 ```
-
-## Author
-
-👤 **jxiaox**
-
-- Website: https://jinx.run/
-- Twitter: [@https://twitter.com/jxiaox](https://twitter.com/https://twitter.com/jxiaox)
-- Github: [@jxiaox](https://github.com/jxiaox)
 
 ## 🤝 Contributing
 
