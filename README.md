@@ -15,6 +15,9 @@
 " target="_blank">
     <img alt="circleci" src="https://img.shields.io/circleci/build/github/jxiaox/cryptocurrency-address-checker" />
   </a>
+  <a href="https://codecov.io/gh/jxiaox/cryptocurrency-address-checker">
+  <img src="https://codecov.io/gh/jxiaox/cryptocurrency-address-checker/branch/master/graph/badge.svg" />
+</a>
 
 </p>
 
