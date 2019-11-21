@@ -35,7 +35,7 @@ function preCheck(address: string, coin: string): boolean {
  * 获取配置
  *
  * @param {string} coin
- * @returns {(IChecker)}
+ * @returns {IChecker}
  */
 function getConfigChecker(coin: string): IChecker {
   const config = getCoinConfig(coin);

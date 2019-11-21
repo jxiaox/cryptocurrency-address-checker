@@ -26,6 +26,8 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      - run: yarn global add codecov
+
       - run: yarn install
 
       - save_cache:
@@ -34,4 +36,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test
+      - run: yarn test; CODECOV_TOKEN="13a75018-7911-477a-a02d-209f5dfc77ed" yarn codecov
