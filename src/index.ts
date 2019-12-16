@@ -1,6 +1,7 @@
 import IChecker from './interfaces/checker.interface';
-import { getCoinConfig } from './modules';
-
+import { ICoinCheckerInfo } from './interfaces/coin.interface';
+import checkers, { getCoinConfig } from './modules';
+import { Network_type } from './utils/constants';
 /**
  * 验证地址是否合法
  *
@@ -48,4 +49,40 @@ function getConfigChecker(coin: string): IChecker {
   );
 }
 
-export { getConfigChecker as cryptoChecker, isValid, preCheck };
+/**
+ * 通过地址猜测币种，返回币种配置
+ *
+ * @param {string} address
+ * @returns {IChecker}
+ */
+function guess(address: string): ICoinCheckerInfo {
+  let result: ICoinCheckerInfo | undefined;
+  const arr = Object.entries(checkers);
+  arr.forEach(([coin, checkClass]) => {
+    if (result) {
+      return null;
+    }
+    const checker: IChecker = new checkClass();
+    if (checker) {
+      const isValidCoin = checker.preCheck(address) as boolean;
+      if (isValidCoin) {
+        const config = getCoinConfig(coin)!;
+        result = {
+          hashAlgorithm: config.algorithm,
+          isValid: isValidCoin,
+          name: config.fullName,
+          networkType: Network_type.Mainnet,
+          symbol: config.symbol
+        };
+        console.log('re', result);
+      }
+    }
+    return null;
+  });
+  if (result) {
+    return result!;
+  }
+  throw new Error(`Invalid address`);
+}
+
+export { getConfigChecker as cryptoChecker, isValid, preCheck, guess };
