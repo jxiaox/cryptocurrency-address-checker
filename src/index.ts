@@ -74,7 +74,6 @@ function guess(address: string): ICoinCheckerInfo {
           networkType: Network_type.Mainnet,
           symbol: config.symbol
         };
-        console.log('re', result);
       }
     }
     return null;

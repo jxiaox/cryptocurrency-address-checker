@@ -1,4 +1,4 @@
-import { isValid, preCheck } from '@/index';
+import { guess, isValid, preCheck } from '@/index';
 
 describe('isValid()', () => {
   // mainnet
@@ -153,5 +153,78 @@ describe('preCheck()', () => {
         'bch'
       )
     ).toBe(false);
+  });
+});
+
+describe('guess()', () => {
+  // mainnet
+  it('should validated when use correct btc address', async () => {
+    expect(await guess('1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs')).toMatchObject({
+      hashAlgorithm: 'SHA256',
+      isValid: true,
+      name: 'Bitcoin',
+      networkType: 0,
+      symbol: 'BTC'
+    });
+    expect(await guess('3NJZLcZEEYBpxYEUGewU4knsQRn1WM5Fkt')).toMatchObject({
+      hashAlgorithm: 'SHA256',
+      isValid: true,
+      name: 'Bitcoin',
+      networkType: 0,
+      symbol: 'BTC'
+    });
+    expect(
+      await guess('bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq')
+    ).toMatchObject({
+      hashAlgorithm: 'SHA256',
+      isValid: true,
+      name: 'Bitcoin',
+      networkType: 0,
+      symbol: 'BTC'
+    });
+  });
+
+  it('should validated when use correct eth address', () => {
+    const tests = [
+      { value: 'function', is: false },
+      { value: '0xc6d9d2cd449a754c494264e1809c50e34d64562b', is: true },
+      { value: 'c6d9d2cd449a754c494264e1809c50e34d64562b', is: true },
+      { value: '0xE247A45c287191d435A8a5D72A7C8dc030451E9F', is: true },
+      { value: '0xE247a45c287191d435A8a5D72A7C8dc030451E9F', is: false },
+      { value: '0xe247a45c287191d435a8a5d72a7c8dc030451e9f', is: true },
+      { value: '0xE247A45C287191D435A8A5D72A7C8DC030451E9F', is: true },
+      { value: '0XE247A45C287191D435A8A5D72A7C8DC030451E9F', is: true }
+    ];
+
+    tests.forEach(async test => {
+      expect(await guess(test.value)).toMatchObject({
+        hashAlgorithm: 'Ethash',
+        isValid: test.is,
+        name: 'Ethereum',
+        networkType: 0,
+        symbol: 'ETH'
+      });
+    });
+  });
+
+  it('should throw error with wrong address', async () => {
+    try {
+      await guess('tc1qw508d6qejxtdg4y5r3zarvary0c5xw7kg3g4ty');
+    } catch (e) {
+      expect(e.message).toEqual('Invalid address');
+    }
+    try {
+      await guess(
+        'bc10w508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kw5rljs90'
+      );
+    } catch (e) {
+      expect(e.message).toEqual('Invalid address');
+    }
+
+    try {
+      await guess('BC1QR508D6QEJXTDG4Y5R3ZARVARYV98GJ9P');
+    } catch (e) {
+      expect(e.message).toEqual('Invalid address');
+    }
   });
 });
